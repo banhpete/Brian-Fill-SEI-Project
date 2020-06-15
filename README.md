@@ -47,3 +47,28 @@ The objective is two-fold, it is to:
     - https://www.ispringsolutions.com/blog/8-tips-for-writing-good-fill-in-the-blank-questions-in-e-learning-courses
 
 All quizzes created will be saved on a database for the user to access later on. Users will also be able to use other quizzes created by another user, however only the user that created the quiz will be able to delete it.
+
+## 3. User Stories for Fill-In the Brain
+To truly understand the tasks needed to create the Fill-In the Brain application, a Trello board was created with three categories, Ice Box, Current/MVP(Minimum Viable Product), and Completed, and user stories were brainstormed under the Ice Box Category. 
+
+User stories were ordered in terms of what would be necessary to create a minimum viable project, and the items deemed absolutely neccessary were moved over the Current/MVP category. All other items will be worked on right now only if time permits, otherwise they will be kept for future development.
+
+Below are the results of the initial brainstorming and categorization.
+- As a visitor, I want to able to log into the web application because I want to use additional features **(Current/MVP)**.
+- As a user, I want to create my own quiz based on content I submit and save it  **(Current/MVP)**.
+- As a user, I want to view all my quizzes I created because I want to access them whenever  **(Current/MVP)**.
+- As a user, I want to be able to take my quiz and save my results  **(Current/MVP)**.
+- As a user, I want to be the only one authorized to delete a quiz I created **(Current/MVP)**.
+- As a visitor, I want to be able to understand the purpose of the web app immediately when I visit **(Icebox)**.
+- As a visitor, I want to be able to view quizzes, the content they are based on, and take them anonymously because I want to try out the web application **(Icebox)**.
+- As a user, I want to leave comments on quizzes other people submitted **(Icebox)**.
+- As a visitor, I want to search for all other quizzes created and stored in the database **(Icebox)**.
+- As a visitor, I want to search for all other quizzes created and stored in the database **(Icebox)**.
+- As a user, I want to invite friends to complete my quiz and have their results recorded **(Icebox)**.
+
+The Trello board can be found [here](https://trello.com/b/0HfglLJ1/fill-in-the-brain). Items in the Current/MVP category will be moved over to completed when finished.
+
+
+
+
+
