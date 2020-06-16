@@ -75,6 +75,8 @@ The Trello board can be found [here](https://trello.com/b/0HfglLJ1/fill-in-the-b
 
 ## 5. Entity Relationship Diagrams
 
+## 6. Creating Fill-In the Blank Statements
+
 
 
 
