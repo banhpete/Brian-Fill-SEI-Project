@@ -5,7 +5,7 @@ const userSchema = new Schema(
   {
     name: String,
     avatar: String,
-    module: [Schema.Types.ObjectId],
+    modules: [{ type: Schema.Types.ObjectId, ref: "Module" }],
     googleId: String,
     facebookId: String,
     fitbId: String,

@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const categorySchema = new Schema(
   {
     name: String,
-    modules: [Schema.Types.ObjectId],
+    modules: [{ type: Schema.Types.ObjectId, ref: "Module" }],
   },
   {
     timestamps: true,

@@ -1,5 +1,6 @@
 const Category = require("../models/category");
 const Module = require("../models/module");
+const User = require("../models/user");
 
 module.exports = {
   create: createModule,
@@ -65,16 +66,19 @@ function createModule(req, res, next) {
   console.log("finished editting data");
   Module.create(req.body, function (err, module) {
     if (err) next();
-    console.log("Module Saved");
-    console.log(module.category);
-    Category.findOne({ name: module.category }, function (err, category) {
-      if (err) next();
-      console.log("Category Updated");
-      console.log("category");
-      category.modules.push(module._id);
-      category.save(function () {
+    const p1 = Category.findOne({ name: module.category });
+    const p2 = User.findById(req.user.id);
+    Promise.all([p1, p2])
+      .then(function (results) {
+        results[0].modules.push(module._id);
+        results[1].modules.push(module._id);
+        return Promise.all([results[0].save(), results[1].save()]);
+      })
+      .then(function (results) {
         res.redirect("/");
+      })
+      .catch(function (err) {
+        next();
       });
-    });
   });
 }
