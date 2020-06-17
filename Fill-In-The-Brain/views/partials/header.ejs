@@ -14,16 +14,16 @@
         <h1>Fill-In The Brain</h1>
         <input type="text" placeholder="Search Fill-In the Brain..." />
         <div>
-          <a href="#">See All Modules</a>
+          <a href="/">See All Modules</a>
           <div>
             <% if(user){ %>
             <a href="#">Your Modules</a>
-            <a href="#">Create a Module</a>
-            <a href="auth/logout">
+            <a href="/modules/create">Create a Module</a>
+            <a href="/auth/logout">
               <input type="button" value="Log Out" />
             </a>
             <% }else{%>
-            <a href="auth/login">
+            <a href="/auth/login">
               <input type="button" value="Log In" />
             </a>
           <% }%>
