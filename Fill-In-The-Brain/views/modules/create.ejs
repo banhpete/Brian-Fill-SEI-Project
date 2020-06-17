@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-
+<script src="/javascripts/moduleCreate.js" defer></script>
 <div id="create-container">
   <div id="create-window">
     <h2>Creating Fill-In the Brain Module</h2>
@@ -7,7 +7,7 @@
       <p>
         To create your module, fill in the following:
       </p>
-      <form method="POST" action="/modules/new">
+      <form method="POST" action="/modules/create">
         <div class="form-row">
           <label for="topic">Enter your Topic:</label>
           <input id="topic" name="topic" type="text" />
@@ -15,7 +15,7 @@
         <div class="form-row">
           <label for="category">Pick Your Category:</label>
           <select id="category" name="category">
-            <option value="science">Sciences</option>
+            <option value="science">Science</option>
             <option value="history">History</option>
           </select>
         </div>
@@ -32,10 +32,10 @@
         </div>
         <div class="form-row">
           <label for="numOfBlanks">How many Fill in the Blanks?</label>
-          <input type="number" id="numOfBlanks" name="numOfBlanks" />
+          <select id="numOfBlanks" name="numOfBlanks"> </select>
         </div>
         <div class="form-row">
-          <input type="submit" value="Next" />
+          <input type="submit" value="Next" disabled />
         </div>
       </form>
     </div>

@@ -1,1 +1,1 @@
-exports.categorys = [{ name: "Science" }, { name: "History" }];
+exports.categorys = [{ name: "science" }, { name: "history" }];
