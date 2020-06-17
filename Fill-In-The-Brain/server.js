@@ -13,7 +13,7 @@ require("./config/database");
 require("./config/passport");
 
 // Routers
-var loginRouter = require("./routes/login");
+var authRouter = require("./routes/auth");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
@@ -41,7 +41,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routers to other Middleware
-app.use("/login", loginRouter);
+app.use("/auth", authRouter);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 

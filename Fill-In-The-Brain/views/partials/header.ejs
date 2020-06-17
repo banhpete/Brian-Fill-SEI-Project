@@ -16,13 +16,17 @@
         <div>
           <a href="#">See All Modules</a>
           <div>
-            <% if(false){ %>
+            <% if(user){ %>
             <a href="#">Your Modules</a>
             <a href="#">Create a Module</a>
-            <% }%>
-            <a href="login">
+            <a href="auth/logout">
+              <input type="button" value="Log Out" />
+            </a>
+            <% }else{%>
+            <a href="auth/login">
               <input type="button" value="Log In" />
             </a>
+          <% }%>
           </div>
         </div>
       </nav>
