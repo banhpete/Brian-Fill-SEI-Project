@@ -73,7 +73,7 @@ function createModule(req, res, next) {
       console.log("category");
       category.modules.push(module._id);
       category.save(function () {
-        res.send(module);
+        res.redirect("/");
       });
     });
   });
