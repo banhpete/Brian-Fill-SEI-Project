@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const moduleSchema = new Schema({
   topic: String,
-  contenttype: String,
+  source: String,
   content: String,
   fibStats: [String],
   numFoundUseful: Number,

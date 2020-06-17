@@ -1,9 +1,12 @@
 var express = require("express");
 var router = express.Router();
 
-/* GET users listing. */
 router.get("/create", isLoggedIn, function (req, res, next) {
   res.render("modules/create", { user: req.user });
+});
+
+router.post("/new", isLoggedIn, function (req, res, next) {
+  res.render("modules/new", { user: req.user });
 });
 
 module.exports = router;

@@ -13,8 +13,8 @@ body{
 }
 
 #login-container{
-  flex-grow:1;
   display:flex;
+  flex-grow:1;
   justify-content:center;
   align-items:center;
   div{
@@ -24,6 +24,51 @@ body{
 
     button{
       width:100%;
+    }
+  }
+}
+
+#create-container{
+  display:flex;
+  flex-grow:1;
+  justify-content:center;
+  align-items:center;
+  #create-window{
+    border:1px solid black;
+    width:650px;
+    h2{
+      font-size:30px;
+      font-weight: 500;
+      padding:10px 15px;
+      border:1px solid black;
+    }
+    div{
+      padding: 10px 15px;
+    }
+    form{
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      .form-row{
+        padding:10px 0px;
+        display:flex;
+        flex-direction:column;
+        input[type="text"]{
+          height:20px;
+        }
+        select{
+          height:24px;
+        }
+        textarea{
+          resize:none;
+          min-height:250px;
+        }
+        &:last-child{
+          display: flex;
+          flex-direction:row;
+          justify-content: center;
+        }
+      }
     }
   }
 }
