@@ -4,6 +4,8 @@ const User = require("../models/user");
 
 module.exports = {
   create: createModule,
+  showAll,
+  showUser,
 };
 
 let ignoredWords = [
@@ -63,7 +65,6 @@ function createModule(req, res, next) {
     words[randWdIndex] = "(-" + words[randWdIndex] + "-)";
     req.body.fibStats.push(words.join(" "));
   }
-  console.log("finished editting data");
   Module.create(req.body, function (err, module) {
     if (err) next();
     const p1 = Category.findOne({ name: module.category });
@@ -72,7 +73,14 @@ function createModule(req, res, next) {
       .then(function (results) {
         results[0].modules.push(module._id);
         results[1].modules.push(module._id);
-        return Promise.all([results[0].save(), results[1].save()]);
+        module.creatorAvatar = results[1].avatar;
+        module.creator = results[1].name;
+        module.creatorId = results[1]._id;
+        return Promise.all([
+          results[0].save(),
+          results[1].save(),
+          module.save(),
+        ]);
       })
       .then(function (results) {
         res.redirect("/");
@@ -81,4 +89,22 @@ function createModule(req, res, next) {
         next();
       });
   });
+}
+
+function showAll(req, res, next) {
+  Module.find({})
+    .limit(12)
+    .exec(function (err, modules) {
+      res.render("index", { user: req.user, modules: modules });
+    });
+}
+
+function showUser(req, res, next) {
+  Module.find({ creatorId: req.user.id })
+    .limit(12)
+    .exec(function (err, modules) {
+      console.log(req.user.id);
+      console.log(modules);
+      res.render("index", { user: req.user, modules: modules });
+    });
 }

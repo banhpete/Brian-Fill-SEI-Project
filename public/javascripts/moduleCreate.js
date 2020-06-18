@@ -45,8 +45,8 @@ function checkContent(event) {
   event.stopPropagation();
   let sentences = contentEl.value.replace(/(\r\n|\n|\r)/gm, " ");
   sentences = sentences.match(/\S.*?\."?(?=\s|$)/g);
+  sentences.forEach((sentence) => console.log(sentence));
   numbersEl.innerText = "";
-  numOfSentences = sentences.length;
   // // TESTING
   // for (i = 0; i < 5; i++) {
   //   let randIndex = Math.floor(Math.random() * numOfSentences);

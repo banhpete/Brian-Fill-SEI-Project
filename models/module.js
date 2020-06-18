@@ -8,7 +8,11 @@ const moduleSchema = new Schema(
     source: String,
     content: String,
     fibStats: [String],
+    creator: String,
+    creatorId: Schema.Types.ObjectId,
+    creatorAvatar: String,
     numFoundUseful: { type: Number, default: 0 },
+    dateCreated: { type: Date, default: new Date() },
   },
   {
     timestamps: true,

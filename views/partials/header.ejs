@@ -17,7 +17,7 @@
           <a href="/">See All Modules</a>
           <div>
             <% if(user){ %>
-            <a href="#">Your Modules</a>
+            <a href="/modules/<%=user.id%>">Your Modules</a>
             <a href="/modules/create">Create a Module</a>
             <a href="/auth/logout">
               <input type="button" value="Log Out" />
