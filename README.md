@@ -61,6 +61,7 @@ Below are the results of the initial brainstorming and categorization. Icebox it
 - As a user, I want to be the only one authorized to delete a module I created **(Current/MVP)**.
 - As a user, I want to edit my module **(Current/MVP)**.
 - As a visitor, I want to be able to understand the purpose of the web app immediately when I visit **(Icebox)**.
+- As a user, I want to switch between using the module as a quiz or using the module as guided notes **(Icebox)**.
 - As a visitor, I want to be able to view modules, the content they are based on, and take them anonymously because I want to try out the web application **(Icebox)**.
 - As a user, I want to leave comments on modules other people submitted **(Icebox)**.
 - As a user, I want to be able to like/dislike modules made by other users **(Icebox)**. 

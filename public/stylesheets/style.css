@@ -379,21 +379,30 @@ body {
   border: 1px solid black;
 }
 
-#module-container #fib-container form {
+#module-container #fib-container .wrong {
+  background: red;
+}
+
+#module-container #fib-container .correct {
+  background: green;
+}
+
+#module-container #fib-container > * {
   padding: 0 30px;
 }
 
-#module-container #fib-container form ol li {
-  margin: 15px 0;
+#module-container #fib-container > * ol li {
+  margin: 15px 0 10px 0;
 }
 
-#module-container #fib-container form > div {
+#module-container #fib-container > * > div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  padding: 10px;
 }
 
 header nav {

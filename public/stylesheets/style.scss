@@ -242,16 +242,23 @@ body{
     width:800px;
     flex-grow:1;
     border:1px solid black;
-    form{
+    .wrong{
+      background:red;
+    }
+    .correct{
+      background:green;
+    }
+    &>*{
       padding: 0 30px;
       ol{
         li{
-          margin:15px 0;
+          margin:15px 0 10px 0;;
         }
       }
       &>div{
         display:flex;
         justify-content: center;
+        padding:10px;
       }
     }
   }

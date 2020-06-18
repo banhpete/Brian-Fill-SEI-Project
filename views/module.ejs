@@ -13,28 +13,42 @@
       </div>
     </div>
     <div id="module-info-right">
-      <p>Created by: Rando User 123</p>
-      <p>June 15th, 2020</p>
+      <p>Created by: <%= module.creator%></p>
+      <p><%= module.dateCreated.toDateString()%></p>
     </div>
   </div>
   <div id="fib-container">
-    <form>
+    <% if(!feedback){ %>
+    <form method="POST" action ="/modules/<%= module._id%>/check">
+    <%}else{%>
+    <div>
+    <%}%>
       <ol>
-        <% module.fibStats.forEach(function(sentence){ let newSen =
+        <% module.fibStats.forEach(function(sentence, index){ let newSen =
         sentence.replace(/\(-.+-\)/, "___________");%>
         <li>
           <p><%= newSen %></p>
         </li>
         <div>
           <p>Enter your answer here:</p>
-          <input type="text" />
+          <input name = "<%= index %>" 
+          <%if(feedback){%> value="<%= feedback[index+1].answer%>" 
+          class = "<%= (feedback[index+1].status) %>" <%}%> type="text" />
         </div>
         <% })%>
       </ol>
       <div>
-        <input type="submit" />
+        <% if(!feedback){ %>
+          <input type="submit" />
+        <%}else{%>
+          <a href="/modules/<%= module._id%>"><button>Try Again</button></a>
+        <%}%>
       </div>
-    </form>
+    <% if(!feedback){ %>
+    </form >
+    <%}else{%>
+    </div>
+    <%}%>
   </div>
 </div>
 <%- include('./partials/footer') %>

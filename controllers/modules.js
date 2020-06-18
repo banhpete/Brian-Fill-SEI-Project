@@ -9,6 +9,7 @@ module.exports = {
   showUser,
   deleteModule,
   useModule,
+  checkAnswers,
 };
 
 let ignoredWords = [
@@ -119,7 +120,7 @@ function showUser(req, res, next) {
 function useModule(req, res, next) {
   Module.findById(req.params.id, function (err, module) {
     if (err) next();
-    res.render("module", { user: req.user, module: module });
+    res.render("module", { user: req.user, module: module, feedback: null });
   });
 }
 
@@ -128,5 +129,23 @@ function deleteModule(req, res, next) {
     console.log(module);
     if (err) next();
     res.redirect("back");
+  });
+}
+
+function checkAnswers(req, res, next) {
+  Module.findById(req.params.id, function (err, module) {
+    if (err) next();
+    let feedback = [0];
+    module.fibStats.forEach(function (sentence, index) {
+      let answer = sentence.match(/\(-.+-\)/);
+      answer[0] = answer[0].replace(/((\(-)+|(-\))+)/g, "");
+      if (req.body[index] == answer[0]) {
+        feedback[0]++;
+        feedback.push({ answer: req.body[index], status: "correct" });
+      } else {
+        feedback.push({ answer: req.body[index], status: "wrong" });
+      }
+    });
+    res.render("module", { user: req.user, module: module, feedback });
   });
 }
