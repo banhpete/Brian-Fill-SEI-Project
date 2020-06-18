@@ -59,6 +59,7 @@ Below are the results of the initial brainstorming and categorization. Icebox it
 - As a user, I want to view all my modules I created because I want to access them whenever  **(Current/MVP)**.
 - As a user, I want to be able to take my module and save my results  **(Current/MVP)**.
 - As a user, I want to be the only one authorized to delete a module I created **(Current/MVP)**.
+- As a user, I want to edit my module **(Current/MVP)**.
 - As a visitor, I want to be able to understand the purpose of the web app immediately when I visit **(Icebox)**.
 - As a visitor, I want to be able to view modules, the content they are based on, and take them anonymously because I want to try out the web application **(Icebox)**.
 - As a user, I want to leave comments on modules other people submitted **(Icebox)**.

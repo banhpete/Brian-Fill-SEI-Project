@@ -4,13 +4,15 @@ var modulesCtrl = require("../controllers/modules");
 
 router.get("/all", modulesCtrl.showAll);
 
-router.get("/create", isLoggedIn, function (req, res, next) {
-  res.render("modules/create", { user: req.user });
-});
+router.get("/create", isLoggedIn, modulesCtrl.createView);
 
-router.post("/create", isLoggedIn, modulesCtrl.create);
+router.post("/create", isLoggedIn, modulesCtrl.createModule);
 
-router.get("/:id", isLoggedIn, modulesCtrl.showUser);
+router.get("/user/:id", isLoggedIn, modulesCtrl.showUser);
+
+router.get("/:id", modulesCtrl.useModule);
+
+router.delete("/:id", isLoggedIn, modulesCtrl.deleteModule);
 
 module.exports = router;
 

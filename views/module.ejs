@@ -1,0 +1,40 @@
+<%- include('./partials/header') %>
+<div id="module-container">
+  <div id="module-info">
+    <div id="module-info-left">
+      <h2>Topic: <%= module.topic%></h2>
+      <div>
+        <p><span>Category:</span> <%= module.category%></p>
+        <p><span>Material From:</span> <%= module.source%></p>
+      </div>
+      <div>
+        <button>Quiz</button>
+        <button>Guided Notes</button>
+      </div>
+    </div>
+    <div id="module-info-right">
+      <p>Created by: Rando User 123</p>
+      <p>June 15th, 2020</p>
+    </div>
+  </div>
+  <div id="fib-container">
+    <form>
+      <ol>
+        <% module.fibStats.forEach(function(sentence){ let newSen =
+        sentence.replace(/\(-.+-\)/, "___________");%>
+        <li>
+          <p><%= newSen %></p>
+        </li>
+        <div>
+          <p>Enter your answer here:</p>
+          <input type="text" />
+        </div>
+        <% })%>
+      </ol>
+      <div>
+        <input type="submit" />
+      </div>
+    </form>
+  </div>
+</div>
+<%- include('./partials/footer') %>

@@ -1,13 +1,32 @@
 <%- include('./partials/header') %>
-
+<script src="/javascripts/indexFunctions.js" defer></script>
 <div id="index-container">
   <div id="info-box">
     Box about how it works
   </div>
   <div id="modules-container">
     <% modules.forEach(function(m){ %>
-    <div class="modules">
+    <div class="module">
       <div class="module-info">
+        <% if(user){if(m.creatorId == user.id) { %>
+        <div class="popup-menu">
+          <i class="fa fa-gear"></i>
+          <ul>
+            <li>
+              <a href="/modules/edit/<%= m._id%>">Edit</a>
+            </li>
+            <li>
+              <form
+                id="<%= m._id%>"
+                method="POST"
+                action="/modules/<%= m._id%>/?_method=DELETE"
+              >
+                <a class="deleteBtn">Delete</a>
+              </form>
+            </li>
+          </ul>
+        </div>
+        <% }} %>
         <div class="module-row">
           <h3>Topic:</h3>
           <p><%= m.topic %></p>
@@ -21,7 +40,7 @@
           <p><%= m.source %></p>
         </div>
         <p id="small-text"><%= m.numFoundUseful %> Found Useful</p>
-        <a href="#"> <button>Try Me</button></a>
+        <a href="/modules/<%= m._id%>"> <button>Try Me</button></a>
       </div>
       <div class="user-div">
         <div class="avatar-img">
@@ -35,6 +54,14 @@
     </div>
     <%})%>
   </div>
+  <div id="pop-up-delete">
+    <p>Are you sure you want to delete this module?</p>
+    <div>
+      <button id="del-yes">Yes</button>
+      <button id="del-no">No</button>
+    </div>
+  </div>
+  <div id="delete-backdrop"></div>
 </div>
 
 <%- include('./partials/footer') %>

@@ -3,9 +3,12 @@ const Module = require("../models/module");
 const User = require("../models/user");
 
 module.exports = {
-  create: createModule,
+  createView,
+  createModule,
   showAll,
   showUser,
+  deleteModule,
+  useModule,
 };
 
 let ignoredWords = [
@@ -36,6 +39,10 @@ let ignoredWords = [
   "what",
   "there",
 ];
+
+function createView(req, res, next) {
+  res.render("modules/create", { user: req.user });
+}
 
 function createModule(req, res, next) {
   // Create another key:value pair for the Schema
@@ -107,4 +114,19 @@ function showUser(req, res, next) {
       console.log(modules);
       res.render("index", { user: req.user, modules: modules });
     });
+}
+
+function useModule(req, res, next) {
+  Module.findById(req.params.id, function (err, module) {
+    if (err) next();
+    res.render("module", { user: req.user, module: module });
+  });
+}
+
+function deleteModule(req, res, next) {
+  Module.findByIdAndRemove({ _id: req.params.id }).exec(function (err, module) {
+    console.log(module);
+    if (err) next();
+    res.redirect("back");
+  });
 }

@@ -22,6 +22,7 @@ body{
 #index-container{
   @extend .container;
   flex-direction:column;
+  position:relative;
   #info-box{
     width: 1100px;
     height:200px;
@@ -35,13 +36,17 @@ body{
     flex-grow: 1;
     margin: 20px 0;
     flex-wrap: wrap;
-    .modules{
+    .module:not(:nth-child(4n)){
+      margin-right:68px;
+    }
+    .module{
       height: 350px;
       width: 220px;
       margin-bottom:20px;
       display:flex;
       flex-direction: column;
       .module-info{
+        position:relative;
         width:100%;
         padding:7px;
         border:1px solid black;
@@ -61,6 +66,31 @@ body{
         p{
           text-transform:capitalize;
         }
+        .popup-menu{
+          position:absolute;
+          left:5px;
+          i{
+            position:absolute;
+          }
+          &:hover ul{
+            visibility: visible;
+          }
+          &:hover{
+            visibility: hidden;
+          }
+          visibility:visible;
+          position:absolute;
+          ul{
+            visibility: hidden;
+            list-style-type: none;
+            li{
+              border:1px solid black;
+              a{
+                text-decoration: none;
+              }
+            }
+          }
+        }
       }
       .user-div{
         width:100%;
@@ -70,20 +100,49 @@ body{
         justify-content: space-evenly;
         align-items:center;
         .avatar-img{
+          display: flex;
+          justify-content: center;
+          align-items: center;
           width:50px;
           height:50px;
           border:1px solid black;
           border-radius:50%;
           img{
-            width:100%;
+            width:105%;
             border-radius:50%;
           }
         }
       }
     }
-    .modules:not(:nth-child(4n)){
-      margin-right:68px;
+  }
+  #pop-up-delete{
+    position:fixed;
+    padding:10px;
+    border: 1px solid black;
+    border-radius:3px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction:column;
+    top:40%;
+    left:40%;
+    z-index:2;
+    background:white;
+    *{
+      margin:5px 0;
     }
+    display:none;
+  }
+  #delete-backdrop{
+    display:none;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(4px);
+    background:rgba(0,0,0,0.6); 
+    position:absolute;
+    top:0px;
+    left:0px;
+    height:100%;
+    width:100%;
   }
 }
 
@@ -137,6 +196,62 @@ body{
           flex-direction:row;
           justify-content: center;
         }
+      }
+    }
+  }
+}
+
+#module-container{
+  @extend .container;
+  flex-direction:column;
+  #module-info{
+    margin-top:20px;
+    width:800px;
+    height:150px;
+    display:flex;
+    justify-content: space-between;
+    #module-info-left{
+      display:flex;
+      flex-direction:column;
+      justify-content: space-around;
+      padding:5px;
+      div{
+        display:flex;
+        p{
+          text-transform: capitalize;
+          margin-right: 10px;
+          span{
+            font-weight:600;
+          }
+        }
+        button{
+          margin-right: 10px;
+        }
+      }
+    }
+    #module-info-right{
+      display:flex;
+      flex-direction:column;
+      justify-content: space-around;
+      align-items: flex-end;
+      padding:5px;
+    }
+  }
+  #fib-container{
+    margin: 5px 0 20px 0;
+    width:800px;
+    flex-grow:1;
+    border:1px solid black;
+    form{
+      padding: 0 30px;
+      ol{
+        li{
+          margin:15px 0;
+        }
+      }
+      &>div{
+        display:flex;
+        justify-content: center;
       }
     }
   }
