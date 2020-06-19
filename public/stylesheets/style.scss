@@ -154,7 +154,16 @@ body{
     border:1px solid black;
 
     button{
+      background: #1a73e8;
+      padding: 8px;
+      border:0px;
+      border-radius:5px;
       width:100%;
+      color:white;
+      font-weight:600;
+      &:hover{
+        background:rgba(26,115,232,0.76)
+      }
     }
   }
 }

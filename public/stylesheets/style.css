@@ -234,7 +234,17 @@ body {
 }
 
 #login-container div button {
+  background: #1a73e8;
+  padding: 8px;
+  border: 0px;
+  border-radius: 5px;
   width: 100%;
+  color: white;
+  font-weight: 600;
+}
+
+#login-container div button:hover {
+  background: rgba(26, 115, 232, 0.76);
 }
 
 #create-container #create-window {
