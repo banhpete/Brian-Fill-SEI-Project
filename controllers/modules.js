@@ -86,32 +86,6 @@ function createModule(req, res, next) {
     .catch(function (err) {
       next();
     });
-  /*
-  Module.create(req.body, function (err, module) {
-    if (err) next();
-    const p1 = Category.findOne({ name: module.category });
-    const p2 = User.findById(req.user.id);
-    Promise.all([p1, p2])
-      .then(function (results) {
-        results[0].modules.push(module._id);
-        results[1].modules.push(module._id);
-        module.creatorAvatar = results[1].avatar;
-        module.creator = results[1].name;
-        module.creatorId = results[1]._id;
-        return Promise.all([
-          results[0].save(),
-          results[1].save(),
-          module.save(),
-        ]);
-      })
-      .then(function (results) {
-        res.redirect("/");
-      })
-      .catch(function (err) {
-        next();
-      });
-  });
-  */
 }
 
 function showAll(req, res, next) {
@@ -147,7 +121,9 @@ function useModule(req, res, next) {
 function deleteModule(req, res, next) {
   Module.findByIdAndRemove({ _id: req.params.id }).exec(function (err, module) {
     if (err) next();
-    res.redirect("back");
+    if (req.path.includes("all") || req.path.includes("user"))
+      res.redirect("back");
+    else res.redirect("/modules/all");
   });
 }
 

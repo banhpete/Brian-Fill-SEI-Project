@@ -1,4 +1,5 @@
 <%- include('./partials/header') %>
+<script src="/javascripts/moduleFunctions.js" defer></script>
 <div id="module-container">
   <div id="module-info">
     <div id="module-info-left">
@@ -15,6 +16,17 @@
     <div id="module-info-right">
       <p>Created by: <%= module.creator.name%></p>
       <p><%= module.dateCreated.toDateString()%></p>
+      <div>
+        <%if(user && user.id==module.creator._id){%>
+        <button>Edit</button>
+        <form
+        id="<%= module._id%>"
+        method="POST"
+        action="/modules/delete/<%= module._id%>/?_method=DELETE"
+      ><input type="button" value ="Delete"class="deleteBtn"></button>
+      </form>
+        <%}%>
+      </div>
     </div>
   </div>
   <div id="fib-container">
@@ -50,5 +62,13 @@
     </div>
     <%}%>
   </div>
+  <div id="pop-up-delete">
+    <p>Are you sure you want to delete this module?</p>
+    <div>
+      <button id="del-yes">Yes</button>
+      <button id="del-no">No</button>
+    </div>
+  </div>
+  <div id="delete-backdrop"></div>
 </div>
 <%- include('./partials/footer') %>

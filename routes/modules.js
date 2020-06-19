@@ -14,7 +14,7 @@ router.post("/:id/check", modulesCtrl.checkAnswers);
 
 router.get("/:id", modulesCtrl.useModule);
 
-router.delete("/:id", isLoggedIn, modulesCtrl.deleteModule);
+router.delete("/delete/:id", isLoggedIn, modulesCtrl.deleteModule);
 
 module.exports = router;
 

@@ -235,6 +235,12 @@ body{
       justify-content: space-around;
       align-items: flex-end;
       padding:5px;
+      div{
+        display:flex;
+        *{
+          margin-left:5px;
+        }
+      }
     }
   }
   #fib-container{
@@ -261,6 +267,34 @@ body{
         padding:10px;
       }
     }
+  }
+  #pop-up-delete{
+    position:fixed;
+    padding:10px;
+    border: 1px solid black;
+    border-radius:3px;
+    justify-content: center;
+    align-items:center;
+    flex-direction:column;
+    top:40%;
+    left:40%;
+    z-index:2;
+    background:white;
+    *{
+      margin:5px 0;
+    }
+    display:none;
+  }
+  #delete-backdrop{
+    display:none;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(4px);
+    background:rgba(0,0,0,0.6); 
+    position:absolute;
+    top:0px;
+    left:0px;
+    height:100%;
+    width:100%;
   }
 }
 
