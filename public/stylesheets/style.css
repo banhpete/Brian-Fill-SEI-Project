@@ -392,6 +392,22 @@ body {
   border: 1px solid black;
 }
 
+#module-container #fib-container #gn-container {
+  display: none;
+}
+
+#module-container #fib-container #gn-container p {
+  margin: 20px 0;
+}
+
+#module-container #fib-container #quiz-container {
+  display: block;
+}
+
+#module-container #fib-container h4 {
+  margin-top: 15px;
+}
+
 #module-container #fib-container .wrong {
   background: red;
 }
@@ -408,7 +424,7 @@ body {
   margin: 15px 0 10px 0;
 }
 
-#module-container #fib-container > * > div {
+#module-container #fib-container > * #submit-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

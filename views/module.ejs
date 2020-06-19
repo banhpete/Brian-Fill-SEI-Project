@@ -9,8 +9,8 @@
         <p><span>Material From:</span> <%= module.source%></p>
       </div>
       <div>
-        <button>Quiz</button>
-        <button>Guided Notes</button>
+        <button id = "quiz-btn" >Quiz</button>
+        <button id = "gn-btn" >Guided Notes</button>
       </div>
     </div>
     <div id="module-info-right">
@@ -18,7 +18,7 @@
       <p><%= module.dateCreated.toDateString()%></p>
       <div>
         <%if(user && user.id==module.creator._id){%>
-        <a href="/modules/edit/<%= module._id%>">Edit</a>
+          <a href="/modules/edit/<%= module._id%>">Edit</a>
         <form
         id="<%= module._id%>"
         method="POST"
@@ -30,6 +30,8 @@
     </div>
   </div>
   <div id="fib-container">
+    <div id="quiz-container">
+      <h4>Quiz</h4>
     <% if(!feedback){ %>
     <form method="POST" action ="/modules/<%= module._id%>/check">
     <%}else{%>
@@ -49,7 +51,7 @@
         </div>
         <% })%>
       </ol>
-      <div>
+      <div id="submit-container">
         <% if(!feedback){ %>
           <input type="submit" />
         <%}else{%>
@@ -61,6 +63,16 @@
     <%}else{%>
     </div>
     <%}%>
+    </div>
+    <div id="gn-container">
+      <h4>Guided Notes</h4>
+      <p>
+        <% module.guidedNotes.split(" ").forEach(function(word, index){
+        if(word.match(/\(-.+-\)/)){%>
+        <input id='<%=word.replace(/\(-+|-\)+/g, "")%>' type="text" />
+        <%}else{%> <%=word%> <%}})%>
+      </p>
+    </div>
   </div>
   <div id="pop-up-delete">
     <p>Are you sure you want to delete this module?</p>

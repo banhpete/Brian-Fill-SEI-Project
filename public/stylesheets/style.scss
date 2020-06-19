@@ -249,6 +249,18 @@ body{
     width:800px;
     flex-grow:1;
     border:1px solid black;
+    #gn-container{
+      display:none;
+      p{
+        margin:20px 0;
+      }
+    }
+    #quiz-container{
+      display:block;
+    }
+    h4{
+      margin-top:15px;
+    }
     .wrong{
       background:red;
     }
@@ -262,7 +274,7 @@ body{
           margin:15px 0 10px 0;;
         }
       }
-      &>div{
+      #submit-container{
         display:flex;
         justify-content: center;
         padding:10px;

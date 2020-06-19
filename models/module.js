@@ -12,6 +12,7 @@ const moduleSchema = new Schema(
     category: { type: Schema.Types.ObjectId, ref: "Category" },
     source: String,
     content: String,
+    guidedNotes: String,
     fibStats: [String],
     creator: { type: Schema.Types.ObjectId, ref: "User" },
     userCompArr: [userCompSchema],

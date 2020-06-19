@@ -41,6 +41,8 @@ let ignoredWords = [
   "how",
   "what",
   "there",
+  "this",
+  "were",
 ];
 
 function createView(req, res, next) {
@@ -71,8 +73,10 @@ function createModule(req, res, next) {
       randWdIndex = Math.floor(Math.random() * words.length);
     }
     words[randWdIndex] = "(-" + words[randWdIndex] + "-)";
+    sentences[randIndex] = words.join(" ");
     req.body.fibStats.push(words.join(" "));
   }
+  req.body.guidedNotes = sentences.join(" ");
 
   const p1 = Category.findOne({ name: req.body.category });
   const p2 = User.findById(req.user.id);
