@@ -8,7 +8,7 @@
     <% modules.forEach(function(m){ %>
     <div class="module">
       <div class="module-info">
-        <% if(user){if(m.creatorId == user.id) { %>
+        <% if(user){if(m.creator._id == user.id) { %>
         <div class="popup-menu">
           <i class="fa fa-gear"></i>
           <ul>
@@ -33,7 +33,7 @@
         </div>
         <div class="module-row">
           <h3>Category:</h3>
-          <p><%= m.category %></p>
+          <p><%= m.category.name %></p>
         </div>
         <div class="module-row">
           <h3>Material From:</h3>
@@ -44,10 +44,10 @@
       </div>
       <div class="user-div">
         <div class="avatar-img">
-          <img src="<%= m.creatorAvatar %>" />
+          <img src="<%= m.creator.avatar %>" />
         </div>
         <div class="user-info">
-          <p><%= m.creator %></p>
+          <p><%= m.creator.name %></p>
           <p><%= m.dateCreated.toDateString()%></p>
         </div>
       </div>

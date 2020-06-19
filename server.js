@@ -17,6 +17,7 @@ require("./config/passport");
 var authRouter = require("./routes/auth");
 var indexRouter = require("./routes/index");
 var modulesRouter = require("./routes/modules");
+var userRouter = require("./routes/user");
 
 // App to Export
 var app = express();
@@ -45,6 +46,7 @@ app.use(passport.session());
 // Routers to other Middleware
 app.use("/modules", modulesRouter);
 app.use("/auth", authRouter);
+app.use("/user", userRouter);
 app.use("/", indexRouter);
 
 // If HTTP Requests don't go to any router then catch 404 and forward to error handler

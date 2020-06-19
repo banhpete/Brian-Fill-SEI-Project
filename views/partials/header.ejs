@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <% if(user){%>
+    <script src="/javascripts/headerFunctions.js" defer></script>
+    <%}%>
     <header>
       <nav>
         <h1>Fill-In The Brain</h1>
@@ -20,9 +23,19 @@
             <% if(user){ %>
             <a href="/modules/user/<%=user.id%>">Your Modules</a>
             <a href="/modules/create">Create a Module</a>
-            <a href="/auth/logout">
-              <input type="button" value="Log Out" />
-            </a>
+            <div id="account">
+              <img src ="<%=user.avatar%>"/>
+              <div id="act-pop-up">
+                <ul>
+                  <li>
+                    <a href="/user/<%=user.id%>">Your Profile</a>
+                  </li>
+                  <li>
+                    <a href="/auth/logout">Log Out</a>
+                  </li>
+                </ul>
+            </div>
+            </div>
             <% }else{%>
             <a href="/auth/login">
               <input type="button" value="Log In" />

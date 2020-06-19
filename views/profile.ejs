@@ -1,0 +1,36 @@
+<%- include('./partials/header') %>
+
+<div id="profile-container">
+  <div id="profile-window">
+    <div id="user-info">
+      <img src="<%=user.avatar%>" />
+      <h3><%= user.name%></h3>
+      <p>Joined: <%=user.createdAt.toDateString()%></p>
+    </div>
+    <div id="module-info">
+      <div>
+        <h4>Created Modules On:</h4>
+        <div>
+          <%createdModules.forEach((module,index) => {%><a
+            href="/modules/<%=module._id%>"
+            ><%=module.topic%><% if(index != createdModules.length-1){%>,
+            <%}%></a
+          ><%})%>
+        </div>
+      </div>
+      <div>
+        <h4>Completed Modules:</h4>
+        <div>
+          <%compModules.forEach((module,index) => { %><a
+            href="/modules/<%=module._id %>"
+          >
+            <%=module.topic%> - <%= module.userCompArr.find((m) => m.user ==
+            user.id).score%><% if(index != compModules.length-1){%>, <%}%></a
+          ><%})%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('./partials/footer') %>

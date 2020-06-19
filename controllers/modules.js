@@ -42,7 +42,7 @@ let ignoredWords = [
 ];
 
 function createView(req, res, next) {
-  res.render("modules/create", { user: req.user });
+  res.render("create", { user: req.user });
 }
 
 function createModule(req, res, next) {
@@ -62,8 +62,6 @@ function createModule(req, res, next) {
     randoArr.push(randIndex);
     let words = sentences[randIndex].split(" ");
     let randWdIndex = Math.floor(Math.random() * words.length);
-    console.log("randoIndex: ", randWdIndex);
-    console.log("word: ", words[randWdIndex]);
     while (
       words[randWdIndex].length < 3 ||
       ignoredWords.includes(words[randWdIndex])
@@ -73,6 +71,22 @@ function createModule(req, res, next) {
     words[randWdIndex] = "(-" + words[randWdIndex] + "-)";
     req.body.fibStats.push(words.join(" "));
   }
+
+  const p1 = Category.findOne({ name: req.body.category });
+  const p2 = User.findById(req.user.id);
+  Promise.all([p1, p2])
+    .then(function (results) {
+      req.body.category = results[0]._id;
+      req.body.creator = results[1]._id;
+      Module.create(req.body, function (err, module) {
+        if (err) next();
+        res.redirect("/");
+      });
+    })
+    .catch(function (err) {
+      next();
+    });
+  /*
   Module.create(req.body, function (err, module) {
     if (err) next();
     const p1 = Category.findOne({ name: module.category });
@@ -97,55 +111,87 @@ function createModule(req, res, next) {
         next();
       });
   });
+  */
 }
 
 function showAll(req, res, next) {
   Module.find({})
     .limit(12)
+    .populate("category")
+    .populate("creator")
     .exec(function (err, modules) {
       res.render("index", { user: req.user, modules: modules });
     });
 }
 
 function showUser(req, res, next) {
-  Module.find({ creatorId: req.user.id })
+  Module.find({ creator: req.user.id })
+    .populate("category")
+    .populate("creator")
     .limit(12)
     .exec(function (err, modules) {
-      console.log(req.user.id);
-      console.log(modules);
       res.render("index", { user: req.user, modules: modules });
     });
 }
 
 function useModule(req, res, next) {
-  Module.findById(req.params.id, function (err, module) {
-    if (err) next();
-    res.render("module", { user: req.user, module: module, feedback: null });
-  });
+  Module.findById(req.params.id)
+    .populate("category")
+    .populate("creator")
+    .exec(function (err, module) {
+      if (err) next();
+      res.render("module", { user: req.user, module: module, feedback: null });
+    });
 }
 
 function deleteModule(req, res, next) {
   Module.findByIdAndRemove({ _id: req.params.id }).exec(function (err, module) {
-    console.log(module);
     if (err) next();
     res.redirect("back");
   });
 }
 
 function checkAnswers(req, res, next) {
-  Module.findById(req.params.id, function (err, module) {
-    if (err) next();
-    let feedback = [0];
-    module.fibStats.forEach(function (sentence, index) {
-      let answer = sentence.match(/\(-.+-\)/);
-      answer[0] = answer[0].replace(/((\(-)+|(-\))+)/g, "");
-      if (req.body[index] == answer[0]) {
-        feedback[0]++;
-        feedback.push({ answer: req.body[index], status: "correct" });
-      } else {
-        feedback.push({ answer: req.body[index], status: "wrong" });
+  Module.findById(req.params.id)
+    .populate("category")
+    .populate("creator")
+    .exec(function (err, module) {
+      if (err) next();
+      let feedback = [0];
+      module.fibStats.forEach(function (sentence, index) {
+        let answer = sentence.match(/\(-.+-\)/);
+        answer[0] = answer[0].replace(/((\(-)+|(-\))+)/g, "");
+        if (req.body[index] == answer[0]) {
+          feedback[0]++;
+          feedback.push({ answer: req.body[index], status: "correct" });
+        } else {
+          feedback.push({ answer: req.body[index], status: "wrong" });
+        }
+      });
+      feedback[0] = feedback[0] + "/" + module.fibStats.length;
+      console.log(req.user);
+      if (req.user) {
+        console.log("Inside the if");
+        let index = module.userCompArr.findIndex(
+          (obj) => obj.user == req.user.id
+        );
+        console.log(index);
+        if (index != -1) {
+          module.userCompArr.splice(index, 1, {
+            user: req.user.id,
+            score: feedback[0],
+          });
+        } else {
+          module.userCompArr.push({
+            user: req.user.id,
+            score: feedback[0],
+          });
+        }
+        module.save(function (err) {
+          if (err) next();
+          res.render("module", { user: req.user, module: module, feedback });
+        });
       }
+      res.render("module", { user: req.user, module: module, feedback });
     });
-    res.render("module", { user: req.user, module: module, feedback });
-  });
 }

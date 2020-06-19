@@ -15,7 +15,6 @@ passport.use(
         if (user) {
           return cb(null, user);
         } else {
-          console.log("Here is the picture: ", profile);
           var newUser = new User({
             name: profile.displayName,
             avatar: profile.photos[0].value,

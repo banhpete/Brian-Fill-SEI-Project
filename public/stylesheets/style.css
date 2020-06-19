@@ -20,7 +20,7 @@ body {
           justify-content: space-between;
 }
 
-.container, #index-container, #login-container, #create-container, #module-container {
+.container, #index-container, #login-container, #create-container, #module-container, #profile-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -405,12 +405,139 @@ body {
   padding: 10px;
 }
 
+#profile-container #profile-window {
+  width: 800px;
+  height: 300px;
+  border: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 20px;
+}
+
+#profile-container #profile-window > div {
+  margin: 0 20px;
+}
+
+#profile-container #profile-window #user-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 25%;
+}
+
+#profile-container #profile-window #user-info img {
+  width: 100%;
+}
+
+#profile-container #profile-window #module-info {
+  padding: 5px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  border: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#profile-container #profile-window #module-info > div {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 header nav {
   padding: 10px 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   border: 1px solid black;
+}
+
+header nav h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header nav #account {
+  position: relative;
+  height: 35px;
+  width: 35px;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header nav #account img {
+  margin: 0px;
+  height: 102%;
+  border-radius: 50%;
+}
+
+header nav #account #act-pop-up {
+  display: none;
+  margin: 0px;
+  width: 120px;
+  position: absolute;
+  top: 45px;
+  left: -70px;
+}
+
+header nav #account #act-pop-up ul {
+  position: relative;
+  width: 100%;
+  list-style-type: none;
+  margin: 0px;
+}
+
+header nav #account #act-pop-up ul li {
+  position: relative;
+  z-index: 2;
+  padding: 5px;
+  border: 1px solid black;
+  margin: 0px;
+}
+
+header nav #account #act-pop-up ul li a {
+  margin: 0px;
+  position: relative;
 }
 
 header nav input[type="text"] {

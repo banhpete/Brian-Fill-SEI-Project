@@ -47,31 +47,6 @@ function checkContent(event) {
   sentences = sentences.match(/\S.*?\."?(?=\s|$)/g);
   sentences.forEach((sentence) => console.log(sentence));
   numbersEl.innerText = "";
-  // // TESTING
-  // for (i = 0; i < 5; i++) {
-  //   let randIndex = Math.floor(Math.random() * numOfSentences);
-  //   while (randoArr.includes(randIndex)) {
-  //     randIndex = Math.floor(Math.random() * numOfSentences);
-  //   }
-  //   randoArr.push(randIndex);
-  //   let words = sentences[randIndex].split(" ");
-  //   let randWdIndex = Math.floor(Math.random() * words.length);
-  //   console.log(sentences[randIndex]);
-  //   console.log("randoIndex: ", randWdIndex);
-  //   console.log("word: ", words[randWdIndex]);
-  //   while (
-  //     words[randWdIndex].length < 3 ||
-  //     ignoredWords.includes(words[randWdIndex])
-  //   ) {
-  //     randWdIndex = Math.floor(Math.random() * words.length);
-  //     console.log("randoIndex: ", randWdIndex);
-  //     console.log("word: ", words[randWdIndex]);
-  //   }
-  //   words[randWdIndex] = "(" + words[randWdIndex] + ")";
-  //   sentences[randIndex] = words.join(" ");
-  //   console.log(sentences[randIndex]);
-  // }
-  // // TESTING ENDS
   for (let i = 0; i <= sentences.length; i++) {
     let option = document.createElement("option");
     option.value = i;

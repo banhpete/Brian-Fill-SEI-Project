@@ -4,7 +4,7 @@
     <div id="module-info-left">
       <h2>Topic: <%= module.topic%></h2>
       <div>
-        <p><span>Category:</span> <%= module.category%></p>
+        <p><span>Category:</span> <%= module.category.name%></p>
         <p><span>Material From:</span> <%= module.source%></p>
       </div>
       <div>
@@ -13,7 +13,7 @@
       </div>
     </div>
     <div id="module-info-right">
-      <p>Created by: <%= module.creator%></p>
+      <p>Created by: <%= module.creator.name%></p>
       <p><%= module.dateCreated.toDateString()%></p>
     </div>
   </div>
