@@ -9,7 +9,6 @@ let delNo = document.getElementById("del-no");
 console.log("connected");
 
 modConEl.onclick = function (event) {
-  event.preventDefault();
   if (!event.target.classList.contains("deleteBtn")) return;
   formEl = event.target.parentNode;
   delPopUp.style.display = "flex";

@@ -18,12 +18,12 @@
       <p><%= module.dateCreated.toDateString()%></p>
       <div>
         <%if(user && user.id==module.creator._id){%>
-        <button>Edit</button>
+        <a href="/modules/edit/<%= module._id%>">Edit</a>
         <form
         id="<%= module._id%>"
         method="POST"
         action="/modules/delete/<%= module._id%>/?_method=DELETE"
-      ><input type="button" value ="Delete"class="deleteBtn"></button>
+      ><a href=# class="deleteBtn">Delete</a>
       </form>
         <%}%>
       </div>

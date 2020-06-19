@@ -1,0 +1,47 @@
+<%- include('./partials/header') %>
+<script src="/javascripts/moduleEdit.js" defer></script>
+<div id="create-container">
+  <div id="create-window">
+    <h2>Editing Fill-In the Brain Module</h2>
+    <div>
+      <p>
+        Edit your module below:
+      </p>
+      <form method="POST" action="/modules/edit/<%=module._id%>">
+        <div class="form-row">
+          <label for="topic">Enter your Topic:</label>
+          <input id="topic" name="topic" type="text" value="<%=module.topic%>"/>
+        </div>
+        <div class="form-row">
+          <label for="category">Pick Your Category:</label>
+          <select id="category" name="category">
+            <option value="science" <%if(module.category == "science"){%> selected <%}%>>Science</option>
+            <option value="history" <%if(module.category == "history"){%> selected <%}%>>History</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="source">Where will the content come from?</label>
+          <select id="source" name="source">
+            <option value="url" disabled <%if(module.source == "url"){%> selected <%}%>>URL</option>
+            <option value="text" <%if(module.source == "text"){%> selected <%}%>>Text</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="content">Content:</label>
+          <textarea id="content" name="content"><%= module.content%></textarea>
+        </div>
+        <div class="form-row">
+          <%console.log(module)%>
+          <label for="numOfBlanks">How many Fill in the Blanks?</label>
+          <span id="<%=module.fibStats.length%>"></span>
+          <select id="numOfBlanks" name="numOfBlanks"></select>
+        </div>
+        <div class="form-row">
+          <p>Editing your module will remove all saved results</p>
+          <input type="submit" value="Edit " />
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<%- include('./partials/footer') %>

@@ -10,6 +10,10 @@ router.post("/create", isLoggedIn, modulesCtrl.createModule);
 
 router.get("/user/:id", isLoggedIn, modulesCtrl.showUser);
 
+router.get("/edit/:id", isLoggedIn, modulesCtrl.editModuleView);
+
+router.post("/edit/:id", isLoggedIn, modulesCtrl.editModule);
+
 router.post("/:id/check", modulesCtrl.checkAnswers);
 
 router.get("/:id", modulesCtrl.useModule);

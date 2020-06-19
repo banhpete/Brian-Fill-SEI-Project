@@ -10,6 +10,8 @@ module.exports = {
   deleteModule,
   useModule,
   checkAnswers,
+  editModuleView,
+  editModule,
 };
 
 let ignoredWords = [
@@ -170,4 +172,59 @@ function checkAnswers(req, res, next) {
       }
       res.render("module", { user: req.user, module: module, feedback });
     });
+}
+
+function editModuleView(req, res, next) {
+  Module.findById(req.params.id, function (err, module) {
+    res.render("edit", { user: req.use, module });
+  });
+}
+
+function editModule(req, res, next) {
+  const promise = Category.findOne({ name: req.body.category });
+  Module.findById(req.params.id, function (err, module) {
+    console.log(req.body.numOfBlanks);
+    if (req.body.numOfBlanks != "No change") {
+      console.log("WTF! It's running");
+      // Create another key:value pair for the Schema
+      req.body.fibStats = [];
+      // To track which sentence has been used already
+      let randoArr = [];
+      // Get all sentences in content
+      let sentences = req.body.content.replace(/(\r\n|\n|\r)/gm, " ");
+      sentences = sentences.match(/\S.*?\."?(?=\s|$)/g);
+      // Create fib statements
+      for (i = 0; i < req.body.numOfBlanks; i++) {
+        let randIndex = Math.floor(Math.random() * sentences.length);
+        while (randoArr.includes(randIndex)) {
+          randIndex = Math.floor(Math.random() * sentences.length);
+        }
+        randoArr.push(randIndex);
+        let words = sentences[randIndex].split(" ");
+        let randWdIndex = Math.floor(Math.random() * words.length);
+        while (
+          words[randWdIndex].length < 3 ||
+          ignoredWords.includes(words[randWdIndex])
+        ) {
+          randWdIndex = Math.floor(Math.random() * words.length);
+        }
+        words[randWdIndex] = "(-" + words[randWdIndex] + "-)";
+        req.body.fibStats.push(words.join(" "));
+      }
+      module.fibStats = req.body.fibStats;
+    }
+    module.topic = req.body.topic;
+    module.source = req.body.source;
+    promise.then(function (category) {
+      module.category = category._id;
+      module.userCompArr = [];
+      console.log(category);
+      module.save(function (err) {
+        console.log(module);
+        console.log("saved!");
+        if (err) next();
+        res.redirect("/modules/" + module._id);
+      });
+    });
+  });
 }
