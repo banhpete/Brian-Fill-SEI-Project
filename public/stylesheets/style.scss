@@ -366,6 +366,18 @@ header{
       justify-content: center;
       align-items: center;
     }
+    form{
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      input[type="submit"]{
+        position:absolute;
+        visibility:hidden;
+      }
+      &>*{
+        margin-left:10px;
+      }
+    }
     #account{
       position:relative;
       height:35px;

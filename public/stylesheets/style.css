@@ -565,6 +565,27 @@ header nav h1 {
           align-items: center;
 }
 
+header nav form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header nav form input[type="submit"] {
+  position: absolute;
+  visibility: hidden;
+}
+
+header nav form > * {
+  margin-left: 10px;
+}
+
 header nav #account {
   position: relative;
   height: 35px;

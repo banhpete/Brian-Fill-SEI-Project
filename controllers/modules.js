@@ -180,7 +180,7 @@ function checkAnswers(req, res, next) {
 
 function editModuleView(req, res, next) {
   Module.findById(req.params.id, function (err, module) {
-    res.render("edit", { user: req.use, module });
+    res.render("edit", { user: req.user, module });
   });
 }
 
