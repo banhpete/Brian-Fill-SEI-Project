@@ -7,7 +7,7 @@
       <p>
         To create your module, fill in the following:
       </p>
-      <form method="POST" action="/modules/create">
+      <form id="module-form" method="POST" action="/modules/create">
         <div class="form-row">
           <label for="topic">Enter your Topic:</label>
           <input id="topic" name="topic" type="text" />
@@ -35,7 +35,7 @@
           <select id="numOfBlanks" name="numOfBlanks"> </select>
         </div>
         <div class="form-row">
-          <input type="submit" value="Create " disabled />
+          <input id="create-btn" type="submit" value="Create " disabled />
         </div>
       </form>
     </div>

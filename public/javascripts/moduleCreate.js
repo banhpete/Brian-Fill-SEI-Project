@@ -1,8 +1,8 @@
 // DOM Elements
-let submitBtnEl = document.querySelector('input[type="submit"]');
+let submitBtnEl = document.querySelector("#create-btn");
 let contentEl = document.querySelector("#content");
 let numbersEl = document.querySelector("#numOfBlanks");
-let formEl = document.querySelector("form");
+let formEl = document.querySelector("#module-form");
 let topicEl = document.querySelector("#topic");
 
 // State
@@ -10,6 +10,8 @@ let topic = false;
 let content = false;
 let number = false;
 let numOfSentences = 0;
+
+console.log("hi");
 
 function checkContent(event) {
   event.stopPropagation();
@@ -27,6 +29,7 @@ function checkContent(event) {
 }
 
 function checkForm(event) {
+  console.log("hi");
   topic = topicEl.value ? true : false;
   content = contentEl.value ? true : false;
   number = numbersEl.value != 0 ? true : false;
