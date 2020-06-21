@@ -9,6 +9,7 @@ let gnEl = document.getElementById("gn-container");
 let gnBtn = document.getElementById("gn-btn");
 let quizEl = document.getElementById("quiz-container");
 let quizBtn = document.getElementById("quiz-btn");
+let usefulBtn = document.getElementById("useful-btn");
 
 console.log("connected");
 
@@ -46,4 +47,25 @@ gnEl.onchange = function (event) {
   if (event.target.value == event.target.id) {
     event.target.style.background = "green";
   }
+};
+
+usefulBtn.onclick = function (event) {
+  let values = usefulBtn.value.split("-");
+  let uid = values[1];
+  let mid = values[0];
+
+  if (uid.length < 15) {
+    return;
+  }
+  fetch("http://localhost:3000/modules/useful/" + uid + "/" + mid)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (response) {
+      if (response.index == -1) {
+        usefulBtn.innerText = response.total + " Found Useful";
+      } else {
+        usefulBtn.innerText = "Did you Find This Useful";
+      }
+    });
 };

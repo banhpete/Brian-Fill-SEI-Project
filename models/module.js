@@ -16,7 +16,7 @@ const moduleSchema = new Schema(
     fibStats: [String],
     creator: { type: Schema.Types.ObjectId, ref: "User" },
     userCompArr: [userCompSchema],
-    numFoundUseful: { type: Number, default: 0 },
+    usersFoundUseful: [Schema.Types.ObjectId],
     dateCreated: { type: Date, default: new Date() },
   },
   {

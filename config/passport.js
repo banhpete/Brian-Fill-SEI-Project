@@ -31,6 +31,7 @@ passport.use(
 );
 
 passport.serializeUser(function (user, done) {
+  console.log("Here it is:", user._id);
   done(null, user.id);
 });
 

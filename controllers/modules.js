@@ -12,6 +12,8 @@ module.exports = {
   checkAnswers,
   editModuleView,
   editModule,
+  searchModule,
+  usefulModule,
 };
 
 let ignoredWords = [
@@ -189,7 +191,6 @@ function editModule(req, res, next) {
   Module.findById(req.params.id, function (err, module) {
     console.log(req.body.numOfBlanks);
     if (req.body.numOfBlanks != "No change") {
-      console.log("WTF! It's running");
       // Create another key:value pair for the Schema
       req.body.fibStats = [];
       // To track which sentence has been used already
@@ -229,6 +230,33 @@ function editModule(req, res, next) {
         if (err) next();
         res.redirect("/modules/" + module._id);
       });
+    });
+  });
+}
+
+function searchModule(req, res, next) {
+  Module.find({ topic: { $regex: req.query.search, $options: "i" } }, function (
+    err,
+    modules
+  ) {
+    console.log(modules);
+    res.render("index", { user: req.user, modules: modules });
+  })
+    .populate("category")
+    .populate("creator")
+    .limit(12);
+}
+
+function usefulModule(req, res, next) {
+  Module.findById(req.params.mid, function (err, module) {
+    let index = module.usersFoundUseful.indexOf(req.params.uid);
+    if (index == -1) {
+      module.usersFoundUseful.push(req.params.uid);
+    } else {
+      module.usersFoundUseful.splice(index, 1);
+    }
+    module.save(function (err) {
+      res.send({ index: index, total: module.usersFoundUseful.length });
     });
   });
 }

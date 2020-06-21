@@ -49,6 +49,20 @@ body {
   text-align: center;
   border: 1px solid black;
   margin: 20px 0 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+#index-container #info-box div {
+  border: 1px solid green;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 #index-container #modules-container {
@@ -365,6 +379,10 @@ body {
 
 #module-container #module-info #module-info-left div button {
   margin-right: 10px;
+}
+
+#module-container #module-info #module-info-left div #useful-btn {
+  width: 165px;
 }
 
 #module-container #module-info #module-info-right {

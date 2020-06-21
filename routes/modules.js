@@ -4,9 +4,13 @@ var modulesCtrl = require("../controllers/modules");
 
 router.get("/all", modulesCtrl.showAll);
 
+router.get("/search", modulesCtrl.searchModule);
+
 router.get("/create", isLoggedIn, modulesCtrl.createView);
 
 router.post("/create", isLoggedIn, modulesCtrl.createModule);
+
+router.get("/useful/:uid/:mid", modulesCtrl.usefulModule);
 
 router.get("/user/:id", isLoggedIn, modulesCtrl.showUser);
 

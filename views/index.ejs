@@ -2,7 +2,8 @@
 <script src="/javascripts/indexFunctions.js" defer></script>
 <div id="index-container">
   <div id="info-box">
-    Box about how it works
+    <div></div>
+    <div></div>
   </div>
   <div id="modules-container">
     <% modules.forEach(function(m){ %>
@@ -39,7 +40,7 @@
           <h3>Material From:</h3>
           <p><%= m.source %></p>
         </div>
-        <p id="small-text"><%= m.numFoundUseful %> Found Useful</p>
+        <p id="small-text"><%= m.usersFoundUseful.length %> Found Useful</p>
         <a href="/modules/<%= m._id%>"> <button>Try Me</button></a>
       </div>
       <div class="user-div">

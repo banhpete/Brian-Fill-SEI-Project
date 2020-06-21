@@ -11,6 +11,14 @@
       <div>
         <button id = "quiz-btn" >Quiz</button>
         <button id = "gn-btn" >Guided Notes</button>
+        <%if(user){%>
+        <button id ="useful-btn" value="<%=module._id%>-<%if(user){%><%=user.id%><%}%>" >
+          <%if(module.usersFoundUseful.includes(user.id)){%>
+            <%=module.usersFoundUseful.length%> Found Useful <%}else{%>Did You Find This Useful?<%}%>
+        </button>
+        <%}else{%>
+          <p><%=module.usersFoundUseful.length%> Found Useful</p>
+        <%}%>
       </div>
     </div>
     <div id="module-info-right">

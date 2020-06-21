@@ -9,6 +9,7 @@ const userSchema = new Schema(
     facebookId: String,
     fitbId: String,
     fitbPass: String,
+    modulesFoundUseful: [Schema.Types.ObjectId],
   },
   {
     timestamps: true,
