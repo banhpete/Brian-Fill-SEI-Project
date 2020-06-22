@@ -413,8 +413,7 @@ header{
         width:0px;
         transition: width 1s;
         &:focus{
-          padding:0 0 0 3px;
-          width:200px;
+          width:175px;
           outline: none;
         }
       }

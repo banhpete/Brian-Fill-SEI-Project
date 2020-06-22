@@ -239,6 +239,7 @@ function searchModule(req, res, next) {
     err,
     modules
   ) {
+    if (err) next();
     console.log(modules);
     res.render("index", { user: req.user, modules: modules });
   })
@@ -249,6 +250,7 @@ function searchModule(req, res, next) {
 
 function usefulModule(req, res, next) {
   Module.findById(req.params.mid, function (err, module) {
+    if (err) next();
     let index = module.usersFoundUseful.indexOf(req.params.uid);
     if (index == -1) {
       module.usersFoundUseful.push(req.params.uid);

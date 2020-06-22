@@ -1,3 +1,5 @@
+const { NotExtended } = require("http-errors");
+
 // DOM ELEMENTS
 let modConEl = document.querySelector("#module-container");
 let formEl = null;
@@ -67,5 +69,8 @@ usefulBtn.onclick = function (event) {
       } else {
         usefulBtn.innerText = "Did you Find This Useful";
       }
+    })
+    .catch(function (err) {
+      return;
     });
 };
