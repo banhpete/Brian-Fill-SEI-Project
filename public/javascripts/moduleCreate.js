@@ -11,8 +11,6 @@ let content = false;
 let number = false;
 let numOfSentences = 0;
 
-console.log("hi");
-
 function checkContent(event) {
   event.stopPropagation();
   let sentences = contentEl.value.replace(/(\r\n|\n|\r)/gm, " ");
@@ -29,7 +27,6 @@ function checkContent(event) {
 }
 
 function checkForm(event) {
-  console.log("hi");
   topic = topicEl.value ? true : false;
   content = contentEl.value ? true : false;
   number = numbersEl.value != 0 ? true : false;

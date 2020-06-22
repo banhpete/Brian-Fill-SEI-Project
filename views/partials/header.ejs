@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Fill-In the Brain</title>
   </head>
 
@@ -15,13 +16,14 @@
     <%}%>
     <header>
       <nav>
-        <h1>Fill-In The Brain</h1>
+        <h1><a href="/"><img src="/images/Logo-Text.png"></a></h1>
         <form method="GET" action="/modules/search"> 
-          <input name = "search" type="text" placeholder="Search Fill-In the Brain..." />
+          <label for = "search"><i class="fa fa-search" style="font-size:24px"></i></label>
+          <input id = "search" name = "search" type="text" placeholder="Search Fill-In the Brain..." />
           <input type="submit">
         </form>
         <div>
-          <a href="/">See All Modules</a>
+          <div></div>
           <div>
             <% if(user){ %>
             <a href="/modules/user/<%=user.id%>">Your Modules</a>

@@ -1,11 +1,12 @@
 *{
-  font-family:Arial, Helvetica, sans-serif;
   margin:0px;
   padding:0px;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 body{
+  background:linear-gradient(rgb(54, 201, 198), rgb(217, 238, 235));
   min-height: 100vh;
   display:flex;
   flex-direction:column;
@@ -30,10 +31,17 @@ body{
     border:1px solid black;
     margin: 20px 0 0 0;
     display: flex;
-    flex-direction: row;
-    div{
-      border:1px solid green;
-      flex-grow: 1;
+    flex-direction: column;
+    &>div{
+      flex-grow: 2;
+      display: flex;
+      flex-direction: row;
+      div{
+        flex-grow: 1;
+      }
+      ul{
+        list-style: none;
+      }
     }
   }
   #modules-container{
@@ -367,24 +375,48 @@ body{
 
 header{
   nav{
+    background: linear-gradient(rgba(233, 215, 88,0.6), rgba(233, 215, 88,0.6)), url("/images/pattern.jpg");
     padding:10px 15px;
     display:flex;
     border:1px solid black;
+    box-shadow: 0 0 8px 0;
     h1{
       display:flex;
       justify-content: center;
       align-items: center;
+      a{
+        display: flex;
+      }
+      img{
+        display: inline-flex;
+        height:40px;
+      }
     }
     form{
       display:flex;
       justify-content: center;
       align-items: center;
+      margin-left:25px;
+      label:hover{
+        cursor:pointer;
+      }
       input[type="submit"]{
         position:absolute;
         visibility:hidden;
       }
-      &>*{
-        margin-left:10px;
+      input[type="text"]{
+        margin-left:3px;
+        background: rgba(0,0,0,0);
+        border-width: 0 0 3px 0;
+        padding:10px 0 0 0;
+        border-radius: 2px;
+        width:0px;
+        transition: width 1s;
+        &:focus{
+          padding:0 0 0 3px;
+          width:200px;
+          outline: none;
+        }
       }
     }
     #account{
@@ -427,10 +459,7 @@ header{
         }
       }
     }
-    input[type="text"]{
-      margin-left:10px;
-      width:250px;
-    }
+
     div{
       margin-left:10px;
       display:flex;
