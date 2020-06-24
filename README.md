@@ -1,11 +1,14 @@
-# Fill In The Brain - General Assembly - SEI Project 2
-Fill in the Brain is a web application used to create learning modules in the form of fill-in-the-blank statements from content provided by a user. The objective is to provide users with a way to quickly test their knowledge on content they are trying to learn or provide some guided notes. This application was created for General Assembly's Software Engineering Immsersive (SEI) Program.
+# BrainFill - General Assembly - SEI Project 2
+BrainFill is a web application used to create learning modules in the form of fill-in-the-blank statements from content provided by a user. The objective is to provide users with a way to quickly test their knowledge on content they are trying to learn or to provide some guided notes. This application was created for General Assembly's Software Engineering Immsersive (SEI) Program.
 
 # Technologies Used
+BrainFill is a web application based on NodeJS, Express and MongoDB. The database is hosted on MongoDB Atlas and the web application is hosted on Heroku.
 
 # Getting Started
+You can find the web app deployed at Heroku [here](https://fill-in-the-brain.herokuapp.com/).
 
 # Next Steps
+Complete the css of the the project.
 
 # Notes on the Initital Development 
 To provide insight of how the application was developed, the following sections are covered:
