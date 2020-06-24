@@ -6,11 +6,16 @@
 }
 
 body{
-  background:linear-gradient(rgb(54, 201, 198), rgb(217, 238, 235));
+  background:#f1f1f1;
   min-height: 100vh;
   display:flex;
   flex-direction:column;
   justify-content: space-between;
+}
+
+::placeholder {
+  color: #f4f4f4a4;
+  opacity: 1; /* Firefox */
 }
 
 .container{
@@ -24,12 +29,39 @@ body{
   @extend .container;
   flex-direction:column;
   position:relative;
+  overflow:hidden;
   #info-box{
+    #arrow-box{
+      position:absolute;
+      display:flex;
+      justify-content: space-between;
+      align-items: center;
+      width:1100px;
+      padding:20px;
+      height:230px;
+      a{
+        position:relative;
+        z-index:2;
+        cursor: pointer;
+        font-size: 30px;
+        width:20px;
+        &:hover{
+          color: #ffde00ff;
+        }
+      }
+    }
+    .box{
+      position:relative;
+      width: 1100px;
+      height:230px;
+    }
+    box-shadow: 5px 10px 20px -15px;
+    background:white;
     width: 1100px;
-    height:200px;
+    height:230px;
     text-align: center;
-    border:1px solid black;
-    margin: 20px 0 0 0;
+    border-radius:5px;
+    margin: 15px 0 0 0;
     display: flex;
     flex-direction: column;
     &>div{
@@ -48,14 +80,16 @@ body{
     display:flex;
     width: 1100px;
     flex-grow: 1;
-    margin: 20px 0;
+    margin: 15px 0;
     flex-wrap: wrap;
     .module:not(:nth-child(4n)){
-      margin-right:68px;
+      margin-right:33px;
     }
     .module{
+      box-shadow: 5px 10px 20px -20px;
+      background:white;
       height: 350px;
-      width: 220px;
+      width: 250px;
       margin-bottom:20px;
       display:flex;
       flex-direction: column;
@@ -119,7 +153,6 @@ body{
           align-items: center;
           width:50px;
           height:50px;
-          border:1px solid black;
           border-radius:50%;
           img{
             width:105%;
@@ -166,6 +199,8 @@ body{
     padding:20px;
     width:500px;
     border:1px solid black;
+    box-shadow: 5px 10px 20px -20px;
+    background:white;
 
     button{
       background: #1a73e8;
@@ -175,8 +210,12 @@ body{
       width:100%;
       color:white;
       font-weight:600;
+      cursor:pointer;
       &:hover{
         background:rgba(26,115,232,0.76)
+      }
+      &:focus{
+        outline:none;
       }
     }
   }
@@ -185,6 +224,8 @@ body{
 #create-container{
   @extend .container;
   #create-window{
+    box-shadow: 5px 10px 20px -20px;
+    background:white;
     border:1px solid black;
     width:650px;
     h2{
@@ -274,6 +315,8 @@ body{
     margin: 5px 0 20px 0;
     width:800px;
     flex-grow:1;
+    box-shadow: 5px 10px 20px -20px;
+    background: white;
     border:1px solid black;
     #gn-container{
       display:none;
@@ -340,6 +383,8 @@ body{
 #profile-container{
   @extend .container;
   #profile-window{
+    box-shadow: 5px 10px 20px -20px;
+    background:white;
     width:800px;
     height:300px;
     border:1px solid black;
@@ -374,12 +419,22 @@ body{
 }
 
 header{
+  svg{
+    width:175px;
+    height:50px;
+  }
+  #center-box{
+    width:1100px;
+  }
   nav{
-    background: linear-gradient(rgba(233, 215, 88,0.6), rgba(233, 215, 88,0.6)), url("/images/pattern.jpg");
+    background: linear-gradient(rgba(16, 22, 105, 0.8), rgba(16, 22, 105, 0.8)), url("/images/pattern.jpg");
     padding:10px 15px;
     display:flex;
+    flex-direction: column;
+    align-items: center;;
     border:1px solid black;
-    box-shadow: 0 0 8px 0;
+    box-shadow: 5px 10px 20px -20px;
+    color:white;
     h1{
       display:flex;
       justify-content: center;
@@ -405,13 +460,16 @@ header{
         visibility:hidden;
       }
       input[type="text"]{
-        margin-left:3px;
+        font-size:16px;
+        margin-left:5px;
         background: rgba(0,0,0,0);
         border-width: 0 0 3px 0;
         padding:10px 0 0 0;
         border-radius: 2px;
+        color:white;
+        border-color:#ffde00ff;
         width:0px;
-        transition: width 1s;
+        transition: width 0.5s;
         &:focus{
           width:175px;
           outline: none;
@@ -422,11 +480,11 @@ header{
       position:relative;
       height:35px;
       width:35px;
-      border: 1px solid black;
       border-radius:50%;
       display:flex;
       justify-content: center;
       align-items: center;
+      cursor:pointer;
       img{
         margin:0px;
         height:102%;
@@ -434,23 +492,35 @@ header{
       }
       #act-pop-up{
         display:none;
+        box-shadow: 3px 3px 15px -5px black;
+        z-index:2;
+        background:white;
         margin:0px;
-        width:120px;
+        width:110px;
         position:absolute;
-        top:45px;
-        left:-70px;
+        top:58px;
+        left:-82px;
+        border-radius:5px;
         ul{
+          border-radius:5px;
           position:relative;
           width:100%;
           list-style-type:none;
           margin:0px;
           li{
+            border-radius:5px;
+            background:white;
             position:relative;
             z-index:2;
-            padding:5px;
-            border:1px solid black;
+            padding:10px 5px;
             margin:0px;
+            cursor:pointer;
+            &:hover{
+              background: #ffde00;
+            }
             a{
+              color:black;
+              text-decoration: none;
               margin:0px;
               position:relative;
             }
@@ -468,9 +538,43 @@ header{
       div{
         flex-grow:0;
         *{
-          margin-left:30px;
         }
       }
+    }
+  }
+  .fib-btn{
+    position:relative;
+    z-index:1;
+    div{
+      z-index:2;
+      margin:0px;
+      width: 0px;
+      height:8px;
+      border: solid #ffde00;
+      border-width: 0 0 0 0;
+      transition: width 0.5s, border-width 0.4s;
+    }
+    input[type="button"]{
+      position:relative;
+      z-index:1;
+      margin:8px;
+      font-size:16px;
+      font-weight:500;
+      border-radius:2px;
+      padding: 8px 2px 0 2px;
+      background:rgba(0,0,0,0);
+      color:white;
+      border-width: 0 0 0 0;
+      &:focus{
+        outline:none;
+      }
+      cursor:pointer;
+    }
+    &:hover div{
+      height:8px;
+      width:100%;
+      border:1px solid #ffde00;
+      border-width: 3px 0 0 0;
     }
   }
 }

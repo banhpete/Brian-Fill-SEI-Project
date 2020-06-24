@@ -1,5 +1,3 @@
-const { NotExtended } = require("http-errors");
-
 // DOM ELEMENTS
 let modConEl = document.querySelector("#module-container");
 let formEl = null;

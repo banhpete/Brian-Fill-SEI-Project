@@ -7,8 +7,7 @@
 }
 
 body {
-  background: -webkit-gradient(linear, left top, left bottom, from(#36c9c6), to(#d9eeeb));
-  background: linear-gradient(#36c9c6, #d9eeeb);
+  background: #f1f1f1;
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -20,6 +19,30 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+::-webkit-input-placeholder {
+  color: #f4f4f4a4;
+  opacity: 1;
+  /* Firefox */
+}
+
+:-ms-input-placeholder {
+  color: #f4f4f4a4;
+  opacity: 1;
+  /* Firefox */
+}
+
+::-ms-input-placeholder {
+  color: #f4f4f4a4;
+  opacity: 1;
+  /* Firefox */
+}
+
+::placeholder {
+  color: #f4f4f4a4;
+  opacity: 1;
+  /* Firefox */
 }
 
 .container, #index-container, #login-container, #create-container, #module-container, #profile-container {
@@ -43,14 +66,18 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   position: relative;
+  overflow: hidden;
 }
 
 #index-container #info-box {
+  -webkit-box-shadow: 5px 10px 20px -15px;
+          box-shadow: 5px 10px 20px -15px;
+  background: white;
   width: 1100px;
-  height: 200px;
+  height: 230px;
   text-align: center;
-  border: 1px solid black;
-  margin: 20px 0 0 0;
+  border-radius: 5px;
+  margin: 15px 0 0 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -58,6 +85,40 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+#index-container #info-box #arrow-box {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 1100px;
+  padding: 20px;
+  height: 230px;
+}
+
+#index-container #info-box #arrow-box a {
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  font-size: 30px;
+  width: 20px;
+}
+
+#index-container #info-box #arrow-box a:hover {
+  color: #ffde00ff;
+}
+
+#index-container #info-box .box {
+  position: relative;
+  width: 1100px;
+  height: 230px;
 }
 
 #index-container #info-box > div {
@@ -91,18 +152,21 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  margin: 20px 0;
+  margin: 15px 0;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }
 
 #index-container #modules-container .module:not(:nth-child(4n)) {
-  margin-right: 68px;
+  margin-right: 33px;
 }
 
 #index-container #modules-container .module {
+  -webkit-box-shadow: 5px 10px 20px -20px;
+          box-shadow: 5px 10px 20px -20px;
+  background: white;
   height: 350px;
-  width: 220px;
+  width: 250px;
   margin-bottom: 20px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -209,7 +273,6 @@ body {
           align-items: center;
   width: 50px;
   height: 50px;
-  border: 1px solid black;
   border-radius: 50%;
 }
 
@@ -263,6 +326,9 @@ body {
   padding: 20px;
   width: 500px;
   border: 1px solid black;
+  -webkit-box-shadow: 5px 10px 20px -20px;
+          box-shadow: 5px 10px 20px -20px;
+  background: white;
 }
 
 #login-container div button {
@@ -273,13 +339,21 @@ body {
   width: 100%;
   color: white;
   font-weight: 600;
+  cursor: pointer;
 }
 
 #login-container div button:hover {
   background: rgba(26, 115, 232, 0.76);
 }
 
+#login-container div button:focus {
+  outline: none;
+}
+
 #create-container #create-window {
+  -webkit-box-shadow: 5px 10px 20px -20px;
+          box-shadow: 5px 10px 20px -20px;
+  background: white;
   border: 1px solid black;
   width: 650px;
 }
@@ -435,6 +509,9 @@ body {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  -webkit-box-shadow: 5px 10px 20px -20px;
+          box-shadow: 5px 10px 20px -20px;
+  background: white;
   border: 1px solid black;
 }
 
@@ -519,6 +596,9 @@ body {
 }
 
 #profile-container #profile-window {
+  -webkit-box-shadow: 5px 10px 20px -20px;
+          box-shadow: 5px 10px 20px -20px;
+  background: white;
   width: 800px;
   height: 300px;
   border: 1px solid black;
@@ -581,16 +661,33 @@ body {
           flex-direction: column;
 }
 
+header svg {
+  width: 175px;
+  height: 50px;
+}
+
+header #center-box {
+  width: 1100px;
+}
+
 header nav {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(233, 215, 88, 0.6)), to(rgba(233, 215, 88, 0.6))), url("/images/pattern.jpg");
-  background: linear-gradient(rgba(233, 215, 88, 0.6), rgba(233, 215, 88, 0.6)), url("/images/pattern.jpg");
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(16, 22, 105, 0.8)), to(rgba(16, 22, 105, 0.8))), url("/images/pattern.jpg");
+  background: linear-gradient(rgba(16, 22, 105, 0.8), rgba(16, 22, 105, 0.8)), url("/images/pattern.jpg");
   padding: 10px 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border: 1px solid black;
-  -webkit-box-shadow: 0 0 8px 0;
-          box-shadow: 0 0 8px 0;
+  -webkit-box-shadow: 5px 10px 20px -20px;
+          box-shadow: 5px 10px 20px -20px;
+  color: white;
 }
 
 header nav h1 {
@@ -641,14 +738,17 @@ header nav form input[type="submit"] {
 }
 
 header nav form input[type="text"] {
-  margin-left: 3px;
+  font-size: 16px;
+  margin-left: 5px;
   background: rgba(0, 0, 0, 0);
   border-width: 0 0 3px 0;
   padding: 10px 0 0 0;
   border-radius: 2px;
+  color: white;
+  border-color: #ffde00ff;
   width: 0px;
-  -webkit-transition: width 1s;
-  transition: width 1s;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
 }
 
 header nav form input[type="text"]:focus {
@@ -660,7 +760,6 @@ header nav #account {
   position: relative;
   height: 35px;
   width: 35px;
-  border: 1px solid black;
   border-radius: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -671,6 +770,7 @@ header nav #account {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  cursor: pointer;
 }
 
 header nav #account img {
@@ -681,14 +781,20 @@ header nav #account img {
 
 header nav #account #act-pop-up {
   display: none;
+  -webkit-box-shadow: 3px 3px 15px -5px black;
+          box-shadow: 3px 3px 15px -5px black;
+  z-index: 2;
+  background: white;
   margin: 0px;
-  width: 120px;
+  width: 110px;
   position: absolute;
-  top: 45px;
-  left: -70px;
+  top: 58px;
+  left: -82px;
+  border-radius: 5px;
 }
 
 header nav #account #act-pop-up ul {
+  border-radius: 5px;
   position: relative;
   width: 100%;
   list-style-type: none;
@@ -696,14 +802,22 @@ header nav #account #act-pop-up ul {
 }
 
 header nav #account #act-pop-up ul li {
+  border-radius: 5px;
+  background: white;
   position: relative;
   z-index: 2;
-  padding: 5px;
-  border: 1px solid black;
+  padding: 10px 5px;
   margin: 0px;
+  cursor: pointer;
+}
+
+header nav #account #act-pop-up ul li:hover {
+  background: #ffde00;
 }
 
 header nav #account #act-pop-up ul li a {
+  color: black;
+  text-decoration: none;
   margin: 0px;
   position: relative;
 }
@@ -730,8 +844,45 @@ header nav div div {
           flex-grow: 0;
 }
 
-header nav div div * {
-  margin-left: 30px;
+header .fib-btn {
+  position: relative;
+  z-index: 1;
+}
+
+header .fib-btn div {
+  z-index: 2;
+  margin: 0px;
+  width: 0px;
+  height: 8px;
+  border: solid #ffde00;
+  border-width: 0 0 0 0;
+  -webkit-transition: width 0.5s, border-width 0.4s;
+  transition: width 0.5s, border-width 0.4s;
+}
+
+header .fib-btn input[type="button"] {
+  position: relative;
+  z-index: 1;
+  margin: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 2px;
+  padding: 8px 2px 0 2px;
+  background: rgba(0, 0, 0, 0);
+  color: white;
+  border-width: 0 0 0 0;
+  cursor: pointer;
+}
+
+header .fib-btn input[type="button"]:focus {
+  outline: none;
+}
+
+header .fib-btn:hover div {
+  height: 8px;
+  width: 100%;
+  border: 1px solid #ffde00;
+  border-width: 3px 0 0 0;
 }
 
 footer {

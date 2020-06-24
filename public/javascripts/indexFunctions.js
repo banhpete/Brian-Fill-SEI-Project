@@ -5,6 +5,7 @@ let delPopUp = document.getElementById("pop-up-delete");
 let delBackdrop = document.getElementById("delete-backdrop");
 let delYes = document.getElementById("del-yes");
 let delNo = document.getElementById("del-no");
+let infoBox = document.getElementById("info-box");
 
 modConEl.onclick = function (event) {
   if (!event.target.classList.contains("deleteBtn")) return;
@@ -22,4 +23,8 @@ delPopUp.onclick = function (event) {
     delBackdrop.style.display = "none";
     formEl = null;
   }
+};
+
+infoBox.onclick = function (event) {
+  console.log("hi");
 };
