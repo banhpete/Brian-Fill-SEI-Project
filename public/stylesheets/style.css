@@ -627,6 +627,7 @@ body {
   background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url("/images/pattern.jpg");
   width: 650px;
   border-radius: 5px;
+  margin: 20px;
 }
 
 #create-container #create-window h2 {
