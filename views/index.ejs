@@ -57,7 +57,7 @@
   </div>
   <div id="modules-container">
     <% modules.forEach(function(m){ %>
-    <div class="module">
+    <div class="module" id = "/modules/<%= m._id%>">
       <div class="module-info">
         <% if(user){if(m.creator._id == user.id) { %>
         <div class="popup-menu">
@@ -91,7 +91,7 @@
           <p><%= m.source %></p>
         </div>
         <p id="small-text"><%= m.usersFoundUseful.length %> Found Useful</p>
-        <a href="/modules/<%= m._id%>"> <button>Try Me</button></a>
+        <a href="/modules/<%= m._id%>"> <button class ="try-me">Try Me</button></a>
       </div>
       <div class="user-div">
         <div class="avatar-img">

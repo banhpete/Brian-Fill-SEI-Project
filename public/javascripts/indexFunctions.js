@@ -9,10 +9,16 @@ let delNo = document.getElementById("del-no");
 
 // Events
 modConEl.onclick = function (event) {
-  if (!event.target.classList.contains("deleteBtn")) return;
-  formEl = event.target.parentNode;
-  delPopUp.style.display = "flex";
-  delBackdrop.style.display = "block";
+  console.log(event.target.offsetParent.classList);
+  if (event.target.classList.contains("deleteBtn")) {
+    formEl = event.target.parentNode;
+    delPopUp.style.display = "flex";
+    delBackdrop.style.display = "block";
+  } else if (event.target.offsetParent.classList.contains("module")) {
+    window.location.href = event.target.offsetParent.id;
+  } else {
+    return;
+  }
 };
 
 delPopUp.onclick = function (event) {

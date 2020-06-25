@@ -11,8 +11,6 @@ let quizEl = document.getElementById("quiz-container");
 let quizBtn = document.getElementById("quiz-btn");
 let usefulBtn = document.getElementById("useful-btn");
 
-console.log("connected");
-
 modConEl.onclick = function (event) {
   if (!event.target.classList.contains("deleteBtn")) return;
   formEl = event.target.parentNode;
@@ -49,26 +47,28 @@ gnEl.onchange = function (event) {
   }
 };
 
-usefulBtn.onclick = function (event) {
-  let values = usefulBtn.value.split("-");
-  let uid = values[1];
-  let mid = values[0];
+if (usefulBtn) {
+  usefulBtn.onclick = function (event) {
+    let values = usefulBtn.value.split("-");
+    let uid = values[1];
+    let mid = values[0];
 
-  if (uid.length < 15) {
-    return;
-  }
-  fetch("http://localhost:3000/modules/useful/" + uid + "/" + mid)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (response) {
-      if (response.index == -1) {
-        usefulBtn.innerText = response.total + " Found Useful";
-      } else {
-        usefulBtn.innerText = "Did you Find This Useful";
-      }
-    })
-    .catch(function (err) {
+    if (uid.length < 15) {
       return;
-    });
-};
+    }
+    fetch("http://localhost:3000/modules/useful/" + uid + "/" + mid)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (response) {
+        if (response.index == -1) {
+          usefulBtn.innerText = response.total + " Found Useful";
+        } else {
+          usefulBtn.innerText = "Did you Find This Useful";
+        }
+      })
+      .catch(function (err) {
+        return;
+      });
+  };
+}
