@@ -1,3 +1,6 @@
+$brainfill-yellow: #ffde00ff;
+$brainfill-blue: rgba(16, 22, 105, 0.8);
+
 *{
   margin:0px;
   padding:0px;
@@ -31,6 +34,16 @@ body{
   position:relative;
   overflow:hidden;
   #info-box{
+    background:linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url("/images/pattern.jpg");
+    box-shadow: 5px 10px 20px -15px;
+    width: 1100px;
+    height:260px;
+    border-radius:5px;
+    margin: 15px 0 0 0;
+    display: flex;
+    align-items: center;;
+    flex-direction: column;
+    position:relative;
     #arrow-box{
       position:absolute;
       display:flex;
@@ -38,7 +51,7 @@ body{
       align-items: center;
       width:1100px;
       padding:20px;
-      height:230px;
+      height:260px;
       a{
         position:relative;
         z-index:2;
@@ -46,33 +59,93 @@ body{
         font-size: 30px;
         width:20px;
         &:hover{
-          color: #ffde00ff;
+          color: $brainfill-yellow;
         }
       }
     }
     .box{
+      padding:10px 0;
       position:relative;
-      width: 1100px;
-      height:230px;
+      width: 75%;
+      height:260px;
+      align-items: center;
+      flex-direction: column;
+      animation:fade-in 0.5s forwards;
+      opacity:0;
+      h2{
+        font-size: 30px;
+        font-family: 'Ubuntu', sans-serif;
+      }
+      p{
+        line-height: 30px;
+        font-size:20px;
+      }
+      li{
+        line-height: 25px;
+        font-size:16px;
+      }
+      @keyframes fade-in{
+        from {opacity:0}
+        to {opacity:1}
+      }
     }
-    box-shadow: 5px 10px 20px -15px;
-    background:white;
-    width: 1100px;
-    height:230px;
-    text-align: center;
-    border-radius:5px;
-    margin: 15px 0 0 0;
-    display: flex;
-    flex-direction: column;
-    &>div{
-      flex-grow: 2;
-      display: flex;
-      flex-direction: row;
-      div{
-        flex-grow: 1;
+    #box-1{
+      display:flex;
+      h2{
+        margin:5px 0px 10px 0;
+      }
+      h3{
+        margin-top:15px;
       }
       ul{
-        list-style: none;
+        margin-top:6px;
+      }
+    }
+    #box-2{
+      display:none;
+      h2{
+        margin:5px 0px 10px 0;
+      }
+      p{
+        margin:30px 0px;
+      }
+      h3{
+        margin-top:10px;
+      }
+      ul{
+        margin-top:6px;
+      }
+    }
+    #box-3{
+      display:none;
+      h2{
+        margin:5px 0px 10px 0;
+      }
+      p{
+        margin:5px 0px;
+      }
+      h3{
+        margin:5px 0;
+      }
+      ul{
+        margin-top:0px;
+      }
+    }
+    .circle{
+      background:rgb(109, 109, 109);
+      border-radius:50%;
+      position:absolute;
+      top:235px;
+      right:20px;
+      width:15px;
+      height:15px;
+    }
+    @for $i from 1 through 3{
+      #circle-#{$i} {
+        @if $i == 1 {
+          background: $brainfill-yellow;
+        }
+        right:20px+(4-$i)*20;
       }
     }
   }
@@ -86,18 +159,27 @@ body{
       margin-right:33px;
     }
     .module{
-      box-shadow: 5px 10px 20px -20px;
+      position:relative;
+      border-radius:5px;
+      box-shadow: 5px 10px 20px -15px;
       background:white;
       height: 350px;
       width: 250px;
       margin-bottom:20px;
       display:flex;
       flex-direction: column;
+      left: 2000px;
+      &>a{
+        position:relative;
+        z-index:2;
+      }
       .module-info{
+        border-radius:5px 5px 0 0;
+        border: solid black;
+        border-width: 0 0 1px 0;
         position:relative;
         width:100%;
         padding:7px;
-        border:1px solid black;
         flex-grow:1;
         display:flex;
         flex-direction:column;
@@ -107,24 +189,41 @@ body{
           text-align:center;
         }
         button{
+          height:30px;
+          margin-bottom: 8px;
           border:0px;
-          padding:10px 40px;
-          border:1px solid black;
+          font-size:18px;
+          font-family: 'Ubuntu', 'Roboto', sans-serif;
+          background:rgba(0,0,0,0);
+          outline:none;
+          transition:font-size 0.25s;
+          &:hover{
+            cursor:pointer;
+            font-size:20px;
+            color:rgb(250, 142, 19);
+          }
         }
         p{
+          font-size:20px;
+          text-decoration: underline;
           text-transform:capitalize;
         }
         .popup-menu{
           position:absolute;
           left:5px;
+
+          visibility:hidden;
           i{
             position:absolute;
           }
           &:hover ul{
             visibility: visible;
           }
-          &:hover{
+          &:hover i{
             visibility: hidden;
+          }
+          &:hover{
+            box-shadow: 5px 7px 10px -5px;
           }
           visibility:visible;
           position:absolute;
@@ -132,7 +231,14 @@ body{
             visibility: hidden;
             list-style-type: none;
             li{
-              border:1px solid black;
+              padding:5px;
+              &:hover{
+                background: $brainfill-yellow;
+                cursor:pointer;
+              }
+              &:active{
+                color:red;
+              }
               a{
                 text-decoration: none;
               }
@@ -141,9 +247,11 @@ body{
         }
       }
       .user-div{
+        background:linear-gradient($brainfill-blue, $brainfill-blue), url("/images/pattern.jpg");
+        color:white;
+        border-radius: 0 0 5px 5px;
         width:100%;
         height:20%;
-        border:1px solid black;
         display:flex;
         justify-content: space-evenly;
         align-items:center;
@@ -159,6 +267,15 @@ body{
             border-radius:50%;
           }
         }
+      }
+      @for $i from 1 through 4 {
+        &:nth-child(4n+ #{$i}){
+          animation: move-in 0.75s #{$i/3}s forwards;
+        }
+      }
+      @keyframes move-in{
+        from {left: 2000px}
+        to {left:0px;}
       }
     }
   }
@@ -198,13 +315,32 @@ body{
   div{
     padding:20px;
     width:500px;
-    border:1px solid black;
+    border-radius:5px;
     box-shadow: 5px 10px 20px -20px;
     background:white;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+
+    .line{
+      margin: 0 auto;
+      width:90%;
+      height:0px;
+      padding:0px;
+      border:1px solid black;
+    }
+
+    h1{
+      margin:0px auto 0px auto;
+      font-family:'Ubuntu'
+    }
 
     button{
+      font-size:16px;
+      margin-top:20px;
+      flex-grow:1;
       background: #1a73e8;
-      padding: 8px;
+      padding: 13px;
       border:0px;
       border-radius:5px;
       width:100%;
@@ -226,13 +362,15 @@ body{
   #create-window{
     box-shadow: 5px 10px 20px -20px;
     background:white;
-    border:1px solid black;
     width:650px;
+    border-radius:5px;
     h2{
       font-size:30px;
       font-weight: 500;
       padding:10px 15px;
-      border:1px solid black;
+      background:$brainfill-blue;
+      color:white;
+      font-family:'Ubuntu';
     }
     div{
       padding: 10px 15px;
@@ -241,6 +379,17 @@ body{
       display:flex;
       flex-direction: column;
       justify-content: center;
+      input[type='text'], textarea, select{
+        background:#F1F1F1;
+        border:0px;
+        border-radius:5px;
+        outline:none;
+        font-size:14px;
+        &:focus{
+          background:white;
+          border:1px solid black;
+        }
+      }
       .form-row{
         padding:10px 0px;
         display:flex;
@@ -260,6 +409,10 @@ body{
           flex-direction:column;
           justify-content: center;
           align-items: center;;
+        }
+        input[type="submit"]{
+          padding:10px;
+          font-family:'Ubuntu';
         }
       }
     }
@@ -387,7 +540,7 @@ body{
     background:white;
     width:800px;
     height:300px;
-    border:1px solid black;
+    border-radius:5px;
     display:flex;
     flex-direction: row;
     padding:20px;
@@ -427,7 +580,7 @@ header{
     width:1100px;
   }
   nav{
-    background: linear-gradient(rgba(16, 22, 105, 0.8), rgba(16, 22, 105, 0.8)), url("/images/pattern.jpg");
+    background: linear-gradient($brainfill-blue, $brainfill-blue), url("/images/pattern.jpg");
     padding:10px 15px;
     display:flex;
     flex-direction: column;
@@ -467,7 +620,7 @@ header{
         padding:10px 0 0 0;
         border-radius: 2px;
         color:white;
-        border-color:#ffde00ff;
+        border-color:$brainfill-yellow;
         width:0px;
         transition: width 0.5s;
         &:focus{
@@ -512,13 +665,14 @@ header{
             background:white;
             position:relative;
             z-index:2;
-            padding:10px 5px;
             margin:0px;
             cursor:pointer;
             &:hover{
               background: #ffde00;
             }
             a{
+              display:block;
+              padding:10px 5px;
               color:black;
               text-decoration: none;
               margin:0px;
@@ -582,11 +736,27 @@ header{
 footer{
   display:flex;
   position:relative;
-  justify-content: center;
+  justify-content: space-between;
   padding:15px 10px;
   color:white;
   background:black;
   height:100px;
+
+  #git-container{
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    p{
+      display:inline;
+    }
+    a{
+      color:white;
+    }
+    a:hover{
+      color:#ffde00;
+    }
+  }
 
   #subscribe-container{
     display:flex;
@@ -598,8 +768,6 @@ footer{
   #contact-container{
     padding-right:10px;
     display:flex;
-    position: absolute;
-    right:0px;
     flex-direction:column;
     justify-content: center;
     align-items: center;

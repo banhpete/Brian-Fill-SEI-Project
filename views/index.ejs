@@ -3,35 +3,57 @@
 <div id="index-container">
   <div id="info-box">
     <div id="arrow-box">
-      <a class="prev">&#10094;</a> <a class="prev">&#10095;</a>
+      <a class="arrow" id="prev">&#10094;</a>
+      <a class="arrow" id="next">&#10095;</a>
     </div>
+    <span class="circle" id="circle-3"></span>
+    <span class="circle" id="circle-2"></span>
+    <span class="circle" id="circle-1"></span>
     <div class="box" id="box-1">
-      Hello
+      <h2>What is BrainFill?</h2>
+      <p>
+        BrainFill is an educational web application designed to help you learn
+        and study a subject that you're interested in faster and more
+        effectively. It does so by providing you with a module on the topic
+        which has:
+      </p>
+      <ul>
+        <li>
+          Questions to assess your knowledge on a subject so you can determine
+          what points you need to focus on, and
+        </li>
+        <li>Guided Notes so you can pin-point key concepts of a subject</li>
+      </ul>
+      <h3>Try a module from the BrainFill community below!</h3>
     </div>
-    <!-- <div class="box" id="box-3"></div>
-    <div class="box" id="box-2"></div> -->
-    <!-- <h2>Welcome to Fill-In The Brain!</h2>
-    <p>Improve your learning!</p>
-    <div>
-      <div>
-        <h3>As a visitor:</h3>
-        <ul>
-          <li>Check out the modules available</li>
-          <li>Try out quizzes or guided notes</li>
-          <li>Learn!</li>
-        </ul>
-      </div>
-      <div>
-        <h3>As a user:</h3>
-        <ul>
-          <li>Check out the modules available</li>
-          <li>Try out quizzes or guided notes</li>
-          <li>Make your own modules!</li>
-          <li>Save your test results!</li>
-          <li>Learn!</li>
-        </ul>
-      </div>
-    </div> -->
+    <div class="box" id="box-2">
+      <h2>How does BrainFill work, and why is it effective?</h2>
+      <p>
+        BrainFill utilizes Fill in the blank statements to help create questions
+        and guided notes. Although not as common as multiple choice, fill in the
+        blank statements have been proven to been more effective at helping
+        students review their notes as shown in this Forbes
+        <a
+          href="https://www.forbes.com/sites/rosspomeroy/2014/02/06/multiple-choice-tests-hinder-critical-thinking-should-they-be-used-in-science-classes/#a052b855ebe0"
+          >article.</a
+        >
+        <h3>This is because fill in the blanks requires the student to understand the answer not memorize it</h3>
+      </p>
+    </div>
+    <div class="box" id="box-3">
+      <h2>Can I create my own module?</h2>
+      <h3>Yes!</h3>
+      <p>
+        All you need to do is log in through Google. Once you are logged in, you can:
+      </p>
+      <ul>
+        <li>
+          Create your own module and have it saved on BrainFill's database for other eager students
+        </li>
+        <li>Save your Quiz Results on any Quiz you've taken</li>
+        <li>Let module creators know their modules were useful</li>
+      </ul>
+    </div>
   </div>
   <div id="modules-container">
     <% modules.forEach(function(m){ %>

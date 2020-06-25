@@ -70,21 +70,25 @@ body {
 }
 
 #index-container #info-box {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.85)), to(rgba(255, 255, 255, 0.85))), url("/images/pattern.jpg");
+  background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url("/images/pattern.jpg");
   -webkit-box-shadow: 5px 10px 20px -15px;
           box-shadow: 5px 10px 20px -15px;
-  background: white;
   width: 1100px;
-  height: 230px;
-  text-align: center;
+  height: 260px;
   border-radius: 5px;
   margin: 15px 0 0 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  position: relative;
 }
 
 #index-container #info-box #arrow-box {
@@ -100,7 +104,7 @@ body {
           align-items: center;
   width: 1100px;
   padding: 20px;
-  height: 230px;
+  height: 260px;
 }
 
 #index-container #info-box #arrow-box a {
@@ -116,32 +120,134 @@ body {
 }
 
 #index-container #info-box .box {
+  padding: 10px 0;
   position: relative;
-  width: 1100px;
-  height: 230px;
+  width: 75%;
+  height: 260px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-animation: fade-in 0.5s forwards;
+          animation: fade-in 0.5s forwards;
+  opacity: 0;
 }
 
-#index-container #info-box > div {
-  -webkit-box-flex: 2;
-      -ms-flex-positive: 2;
-          flex-grow: 2;
+#index-container #info-box .box h2 {
+  font-size: 30px;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+#index-container #info-box .box p {
+  line-height: 30px;
+  font-size: 20px;
+}
+
+#index-container #info-box .box li {
+  line-height: 25px;
+  font-size: 16px;
+}
+
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#index-container #info-box #box-1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
 }
 
-#index-container #info-box > div div {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+#index-container #info-box #box-1 h2 {
+  margin: 5px 0px 10px 0;
 }
 
-#index-container #info-box > div ul {
-  list-style: none;
+#index-container #info-box #box-1 h3 {
+  margin-top: 15px;
+}
+
+#index-container #info-box #box-1 ul {
+  margin-top: 6px;
+}
+
+#index-container #info-box #box-2 {
+  display: none;
+}
+
+#index-container #info-box #box-2 h2 {
+  margin: 5px 0px 10px 0;
+}
+
+#index-container #info-box #box-2 p {
+  margin: 30px 0px;
+}
+
+#index-container #info-box #box-2 h3 {
+  margin-top: 10px;
+}
+
+#index-container #info-box #box-2 ul {
+  margin-top: 6px;
+}
+
+#index-container #info-box #box-3 {
+  display: none;
+}
+
+#index-container #info-box #box-3 h2 {
+  margin: 5px 0px 10px 0;
+}
+
+#index-container #info-box #box-3 p {
+  margin: 5px 0px;
+}
+
+#index-container #info-box #box-3 h3 {
+  margin: 5px 0;
+}
+
+#index-container #info-box #box-3 ul {
+  margin-top: 0px;
+}
+
+#index-container #info-box .circle {
+  background: #6d6d6d;
+  border-radius: 50%;
+  position: absolute;
+  top: 235px;
+  right: 20px;
+  width: 15px;
+  height: 15px;
+}
+
+#index-container #info-box #circle-1 {
+  background: #ffde00ff;
+  right: 80px;
+}
+
+#index-container #info-box #circle-2 {
+  right: 60px;
+}
+
+#index-container #info-box #circle-3 {
+  right: 40px;
 }
 
 #index-container #modules-container {
@@ -162,8 +268,10 @@ body {
 }
 
 #index-container #modules-container .module {
-  -webkit-box-shadow: 5px 10px 20px -20px;
-          box-shadow: 5px 10px 20px -20px;
+  position: relative;
+  border-radius: 5px;
+  -webkit-box-shadow: 5px 10px 20px -15px;
+          box-shadow: 5px 10px 20px -15px;
   background: white;
   height: 350px;
   width: 250px;
@@ -175,13 +283,21 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  left: 2000px;
+}
+
+#index-container #modules-container .module > a {
+  position: relative;
+  z-index: 2;
 }
 
 #index-container #modules-container .module .module-info {
+  border-radius: 5px 5px 0 0;
+  border: solid black;
+  border-width: 0 0 1px 0;
   position: relative;
   width: 100%;
   padding: 7px;
-  border: 1px solid black;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -205,18 +321,33 @@ body {
 }
 
 #index-container #modules-container .module .module-info button {
+  height: 30px;
+  margin-bottom: 8px;
   border: 0px;
-  padding: 10px 40px;
-  border: 1px solid black;
+  font-size: 18px;
+  font-family: 'Ubuntu', 'Roboto', sans-serif;
+  background: rgba(0, 0, 0, 0);
+  outline: none;
+  -webkit-transition: font-size 0.25s;
+  transition: font-size 0.25s;
+}
+
+#index-container #modules-container .module .module-info button:hover {
+  cursor: pointer;
+  font-size: 20px;
+  color: #fa8e13;
 }
 
 #index-container #modules-container .module .module-info p {
+  font-size: 20px;
+  text-decoration: underline;
   text-transform: capitalize;
 }
 
 #index-container #modules-container .module .module-info .popup-menu {
   position: absolute;
   left: 5px;
+  visibility: hidden;
   visibility: visible;
   position: absolute;
 }
@@ -229,8 +360,13 @@ body {
   visibility: visible;
 }
 
-#index-container #modules-container .module .module-info .popup-menu:hover {
+#index-container #modules-container .module .module-info .popup-menu:hover i {
   visibility: hidden;
+}
+
+#index-container #modules-container .module .module-info .popup-menu:hover {
+  -webkit-box-shadow: 5px 7px 10px -5px;
+          box-shadow: 5px 7px 10px -5px;
 }
 
 #index-container #modules-container .module .module-info .popup-menu ul {
@@ -239,7 +375,16 @@ body {
 }
 
 #index-container #modules-container .module .module-info .popup-menu ul li {
-  border: 1px solid black;
+  padding: 5px;
+}
+
+#index-container #modules-container .module .module-info .popup-menu ul li:hover {
+  background: #ffde00ff;
+  cursor: pointer;
+}
+
+#index-container #modules-container .module .module-info .popup-menu ul li:active {
+  color: red;
 }
 
 #index-container #modules-container .module .module-info .popup-menu ul li a {
@@ -247,9 +392,12 @@ body {
 }
 
 #index-container #modules-container .module .user-div {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(16, 22, 105, 0.8)), to(rgba(16, 22, 105, 0.8))), url("/images/pattern.jpg");
+  background: linear-gradient(rgba(16, 22, 105, 0.8), rgba(16, 22, 105, 0.8)), url("/images/pattern.jpg");
+  color: white;
+  border-radius: 0 0 5px 5px;
   width: 100%;
   height: 20%;
-  border: 1px solid black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -279,6 +427,44 @@ body {
 #index-container #modules-container .module .user-div .avatar-img img {
   width: 105%;
   border-radius: 50%;
+}
+
+#index-container #modules-container .module:nth-child(4n+ 1) {
+  -webkit-animation: move-in 0.75s 0.33333s forwards;
+          animation: move-in 0.75s 0.33333s forwards;
+}
+
+#index-container #modules-container .module:nth-child(4n+ 2) {
+  -webkit-animation: move-in 0.75s 0.66667s forwards;
+          animation: move-in 0.75s 0.66667s forwards;
+}
+
+#index-container #modules-container .module:nth-child(4n+ 3) {
+  -webkit-animation: move-in 0.75s 1s forwards;
+          animation: move-in 0.75s 1s forwards;
+}
+
+#index-container #modules-container .module:nth-child(4n+ 4) {
+  -webkit-animation: move-in 0.75s 1.33333s forwards;
+          animation: move-in 0.75s 1.33333s forwards;
+}
+
+@-webkit-keyframes move-in {
+  from {
+    left: 2000px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+@keyframes move-in {
+  from {
+    left: 2000px;
+  }
+  to {
+    left: 0px;
+  }
 }
 
 #index-container #pop-up-delete {
@@ -325,15 +511,43 @@ body {
 #login-container div {
   padding: 20px;
   width: 500px;
-  border: 1px solid black;
+  border-radius: 5px;
   -webkit-box-shadow: 5px 10px 20px -20px;
           box-shadow: 5px 10px 20px -20px;
   background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#login-container div .line {
+  margin: 0 auto;
+  width: 90%;
+  height: 0px;
+  padding: 0px;
+  border: 1px solid black;
+}
+
+#login-container div h1 {
+  margin: 0px auto 0px auto;
+  font-family: 'Ubuntu';
 }
 
 #login-container div button {
+  font-size: 16px;
+  margin-top: 20px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
   background: #1a73e8;
-  padding: 8px;
+  padding: 13px;
   border: 0px;
   border-radius: 5px;
   width: 100%;
@@ -354,15 +568,17 @@ body {
   -webkit-box-shadow: 5px 10px 20px -20px;
           box-shadow: 5px 10px 20px -20px;
   background: white;
-  border: 1px solid black;
   width: 650px;
+  border-radius: 5px;
 }
 
 #create-container #create-window h2 {
   font-size: 30px;
   font-weight: 500;
   padding: 10px 15px;
-  border: 1px solid black;
+  background: rgba(16, 22, 105, 0.8);
+  color: white;
+  font-family: 'Ubuntu';
 }
 
 #create-container #create-window div {
@@ -380,6 +596,19 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+#create-container #create-window form input[type='text'], #create-container #create-window form textarea, #create-container #create-window form select {
+  background: #F1F1F1;
+  border: 0px;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+}
+
+#create-container #create-window form input[type='text']:focus, #create-container #create-window form textarea:focus, #create-container #create-window form select:focus {
+  background: white;
+  border: 1px solid black;
 }
 
 #create-container #create-window form .form-row {
@@ -420,6 +649,11 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+#create-container #create-window form .form-row input[type="submit"] {
+  padding: 10px;
+  font-family: 'Ubuntu';
 }
 
 #module-container {
@@ -601,7 +835,7 @@ body {
   background: white;
   width: 800px;
   height: 300px;
-  border: 1px solid black;
+  border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -806,7 +1040,6 @@ header nav #account #act-pop-up ul li {
   background: white;
   position: relative;
   z-index: 2;
-  padding: 10px 5px;
   margin: 0px;
   cursor: pointer;
 }
@@ -816,6 +1049,8 @@ header nav #account #act-pop-up ul li:hover {
 }
 
 header nav #account #act-pop-up ul li a {
+  display: block;
+  padding: 10px 5px;
   color: black;
   text-decoration: none;
   margin: 0px;
@@ -890,13 +1125,38 @@ footer {
   display: -ms-flexbox;
   display: flex;
   position: relative;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 15px 10px;
   color: white;
   background: black;
   height: 100px;
+}
+
+footer #git-container {
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+footer #git-container p {
+  display: inline;
+}
+
+footer #git-container a {
+  color: white;
+}
+
+footer #git-container a:hover {
+  color: #ffde00;
 }
 
 footer #subscribe-container {
@@ -920,8 +1180,6 @@ footer #contact-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  position: absolute;
-  right: 0px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
