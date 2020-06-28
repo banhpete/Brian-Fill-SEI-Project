@@ -1,46 +1,37 @@
 <%- include('./partials/header') %>
 <script src="/javascripts/moduleFunctions.js" defer></script>
 <div id="module-container">
-  <div id ="module-window">
-    <div id="module-info">
-      <div id="module-info-left">
-        <h2>Topic: <%= module.topic%></h2>
-        <div>
-          <p><span>Category:</span> <%= module.category.name%></p>
-          <p><span>Material From:</span> <%= module.source%></p>
-        </div>
-        <div>
-          <button id = "quiz-btn" >Quiz</button>
-          <button id = "gn-btn" >Guided Notes</button>
-          <%if(user){%>
-          <button id ="useful-btn" value="<%=module._id%>-<%if(user){%><%=user.id%><%}%>" >
-            <%if(module.usersFoundUseful.includes(user.id)){%>
-              <%=module.usersFoundUseful.length%> Found Useful <%}else{%>Did You Find This Useful?<%}%>
-          </button>
-          <%}else{%>
-            <p><%=module.usersFoundUseful.length%> Found Useful</p>
-          <%}%>
-        </div>
-      </div>
-      <div id="module-info-right">
-        <p>Created by: <%= module.creator.name%></p>
-        <p><%= module.dateCreated.toDateString()%></p>
-        <div>
-          <%if(user && user.id==module.creator._id){%>
-            <a href="/modules/edit/<%= module._id%>">Edit</a>
-          <form
-          id="<%= module._id%>"
-          method="POST"
-          action="/modules/delete/<%= module._id%>/?_method=DELETE"
-        ><a href=# class="deleteBtn">Delete</a>
-        </form>
-          <%}%>
-        </div>
-      </div>
+  <div class ="module-window">
+    <div class="module-header">
+      <h2>Quiz on <%= module.topic%></h2>
+      <p>Use the Guided Notes&#10095;</p>
     </div>
-    <div id="fib-container">
-      <div id="quiz-container">
-        <h4>Quiz</h4>
+    <div class="module-info">
+      <div class ="module-info-left">
+        <p><span>Category:</span> <%= module.category.name%></p>
+        <p><span>Material From:</span> <%= module.source%></p>
+      </div>
+      <div class ="module-info-right module-info-hidden">
+        <%if(user && user.id==module.creator._id){%>
+          <a href="/modules/edit/<%= module._id%>">Edit</a>
+        <form
+        id="<%= module._id%>"
+        method="POST"
+        action="/modules/delete/<%= module._id%>/?_method=DELETE"
+      ><a class="deleteBtn">Delete</a>
+      </form>
+        <%}%>
+      </div>         
+    </div>
+    <div class ="arrow-box">
+      <span class ="arrow">&#10095;</span>
+    </div>
+    <div class="fib-container">
+      <div class ="create-info">
+        <p><span>Created by: </span><%= module.creator.name%></p>
+        <p><span>Created On:</span> <%= module.dateCreated.toDateString()%></p>
+      </div>
+      <div class="quiz-container">
       <% if(!feedback){ %>
       <form method="POST" action ="/modules/<%= module._id%>/check">
       <%}else{%>
@@ -62,7 +53,8 @@
         </ol>
         <div id="submit-container">
           <% if(!feedback){ %>
-            <input type="submit" />
+            <input id="submit" type="submit" />
+            <label for="submit"></label>
           <%}else{%>
             <a href="/modules/<%= module._id%>"><button>Try Again</button></a>
           <%}%>
@@ -73,8 +65,39 @@
       </div>
       <%}%>
       </div>
+    </div>
+  </div>
+  <div class ="module-window">
+    <div class="module-header">
+      <h2>Guided Notes on <%= module.topic%></h2>
+      <p>Take the Quiz&#10095;</p>
+    </div>
+    <div class="module-info">
+      <div class ="module-info-left">
+        <p><span>Category:</span> <%= module.category.name%></p>
+        <p><span>Material From:</span> <%= module.source%></p>
+      </div>
+      <div class ="module-info-right module-info-hidden">
+        <%if(user && user.id==module.creator._id){%>
+          <a href="/modules/edit/<%= module._id%>">Edit</a>
+        <form
+        id="<%= module._id%>"
+        method="POST"
+        action="/modules/delete/<%= module._id%>/?_method=DELETE"
+      ><a href=# class="deleteBtn">Delete</a>
+      </form>
+        <%}%>
+      </div>         
+    </div>
+    <div class ="arrow-box">
+      <span class="arrow">&#10095;</span>
+    </div>
+    <div class="fib-container">
+      <div class ="create-info">
+        <p><span>Created by: </span><%= module.creator.name%></p>
+        <p><span>Created On:</span> <%= module.dateCreated.toDateString()%></p>
+      </div>
       <div id="gn-container">
-        <h4>Guided Notes</h4>
         <p>
           <% module.guidedNotes.split(" ").forEach(function(word, index){
           if(word.match(/\(-.+-\)/)){%>

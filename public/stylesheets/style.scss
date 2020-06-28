@@ -460,87 +460,127 @@ body{
 #module-container{
   @extend .container;
   flex-direction:column;
-  #module-info{
-    margin-top:20px;
+  .module-window{
     width:800px;
-    height:150px;
-    display:flex;
-    justify-content: space-between;
-    #module-info-left{
+    margin:20px;
+    .module-header{
+      background: linear-gradient($brainfill-blue, $brainfill-blue), url("/images/pattern.jpg");
+      border-radius:5px 5px 0 0;
+      padding:10px 15px;
+      color:white;
       display:flex;
-      flex-direction:column;
-      justify-content: space-around;
-      padding:5px;
+      justify-content: space-between;
+      align-items: center;
       h2{
         font-family: 'Ubuntu','Roboto', sans-serif;
-      }
-      div{
-        display:flex;
-        p{
-          text-transform: capitalize;
-          margin-right: 10px;
-          span{
-            font-weight:600;
-          }
-        }
-        button{
-          margin-right: 10px;
-        }
-        #useful-btn{
-          width:165px;
-        }
+        font-size:30px;
       }
     }
-    #module-info-right{
+    .module-info{
+      position:relative;
       display:flex;
-      flex-direction:column;
-      justify-content: space-around;
-      align-items: flex-end;
-      padding:5px;
-      div{
-        display:flex;
-        *{
-          margin-left:5px;
+      flex-direction: row;
+      justify-content: space-between;
+      height: 0px;
+      padding:0px 15px;
+      color:white;
+      background:rgba(16, 22, 105, 0.6);
+      overflow:hidden;
+      text-transform: capitalize;
+      transition: height 0.5s, padding 0.5s;
+      .module-info-right{
+        text-align:right;
+        & *{
+          color:white;
+          text-decoration: none;
+        }
+        & *:hover{
+          color:$brainfill-yellow;
         }
       }
     }
-  }
-  #fib-container{
-    margin: 5px 0 20px 0;
-    width:800px;
-    flex-grow:1;
-    box-shadow: 5px 10px 20px -20px;
-    background: white;
-    border-radius:5px;
-    #gn-container{
-      display:none;
-      p{
-        margin:20px 0;
+    .module-info.module-info-activate{
+      padding:10px 15px;
+      height: 58px;
+    }
+    .arrow-box{
+      display:flex;
+      justify-content: center;;
+      position:relative;
+      height:100%;
+      .arrow{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        width:30px;
+        height:30px;
+        transform: rotate(90deg);
+        position:absolute;
+        border-radius:50%;
+        top:-12px;
+        color:white;
+        background:rgb(16, 22, 105);
+        &:hover{
+          cursor:pointer;
+          color:$brainfill-yellow;
+        }
       }
     }
-    #quiz-container{
-      display:block;
-    }
-    h4{
-      margin-top:15px;
-    }
-    .wrong{
-      background:red;
-    }
-    .correct{
-      background:green;
-    }
-    &>*{
-      padding: 0 30px;
+    .fib-container{
+      flex-grow:1;
+      box-shadow: 5px 10px 20px -20px;
+      background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url("/images/pattern.jpg");
+      border-radius:0 0 5px 5px;
+      padding:0 10px;
+      .create-info{
+        padding:10px 15px;
+        display:flex;
+        justify-content: space-between;
+      }
       ol{
+        padding:0 30px;
         li{
-          margin:15px 0 10px 0;;
+          padding:15px 0 0 0;
+          margin:0 0 10px 0;;
         }
       }
       #submit-container{
+        position: relative;
         display:flex;
         justify-content: center;
-        padding:10px;
+        align-items: center;
+        flex-direction: column;
+        padding:20px;
+        transition:width 1s;
+        input[type='submit']{
+          background:rgba(0,0,0,0);
+          border: 0px;
+          outline:none;
+          cursor:pointer;
+          font-size:16px;
+          &:hover + label{
+            width:50px;
+            border: 2px solid $brainfill-yellow;
+          }
+        }
+        label{
+          width:0px;
+          box-sizing: border-box;
+          border:2px solid rgba(0,0,0,0);
+          transition: width 0.5s, border 0.5s;
+        }
+      }
+      #gn-container{
+        padding:20px 15px;
+        p{
+          line-height: 2;
+        }
+      }
+      .wrong{
+        background:red;
+      }
+      .correct{
+        background:green;
       }
     }
   }
