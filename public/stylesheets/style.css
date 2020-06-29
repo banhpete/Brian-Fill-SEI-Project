@@ -722,9 +722,38 @@ body {
           flex-direction: column;
 }
 
-#module-container .module-window {
+#module-container .module-positioner {
+  position: relative;
   width: 800px;
   margin: 20px;
+}
+
+#module-container #window-1 {
+  z-index: 1;
+  position: relative;
+  top: 0px;
+  -webkit-transition: opacity 0.5s, height 1.5s;
+  transition: opacity 0.5s, height 1.5s;
+}
+
+#module-container #window-2 {
+  z-index: -1;
+  position: absolute;
+  top: 0px;
+  opacity: 0%;
+  -webkit-transition: opacity 0.5s, height 1.5s;
+  transition: opacity 0.5s, height 1.5s;
+}
+
+#module-container .module-window {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 800px;
 }
 
 #module-container .module-window .module-header {
@@ -750,7 +779,6 @@ body {
 }
 
 #module-container .module-window .module-info {
-  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -797,7 +825,6 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   position: relative;
-  height: 100%;
 }
 
 #module-container .module-window .arrow-box .arrow {
@@ -827,6 +854,7 @@ body {
 }
 
 #module-container .module-window .fib-container {
+  overflow: hidden;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -836,16 +864,66 @@ body {
   background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url("/images/pattern.jpg");
   border-radius: 0 0 5px 5px;
   padding: 0 10px;
+  -webkit-transition: height 0.5s;
+  transition: height 0.5s;
 }
 
-#module-container .module-window .fib-container .create-info {
-  padding: 10px 15px;
+#module-container .module-window .fib-container input[type="text"] {
+  padding-left: 5px;
+  background: #F1F1F1;
+  border: 0px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+#module-container .module-window .fib-container input[type="text"]:focus {
+  background: white;
+  border: 1px solid black;
+}
+
+#module-container .module-window .fib-container .additional-info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding: 10px 15px;
+}
+
+#module-container .module-window .fib-container .additional-info .create-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#module-container .module-window .fib-container .additional-info .useful-btn {
+  font-size: 15px;
+  position: relative;
+  background: rgba(0, 0, 0, 0);
+  border: 0px;
+  outline: none;
+}
+
+#module-container .module-window .fib-container .additional-info .useful-btn:hover > .line {
+  width: 100%;
+}
+
+#module-container .module-window .fib-container .additional-info .useful-btn .line {
+  z-index: 3;
+  background: #ffde00ff;
+  height: 3px;
+  width: 0;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
 }
 
 #module-container .module-window .fib-container ol {

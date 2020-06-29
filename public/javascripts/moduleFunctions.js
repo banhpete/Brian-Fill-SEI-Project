@@ -26,62 +26,41 @@ delPopUp.onclick = function (event) {
   }
 };
 
-// // QUIZ-GUIDED NOTES TRANSITION
-// // Dom Elements
-// let gnEl = document.getElementById("gn-container");
-// let gnBtn = document.getElementById("gn-btn");
-// let quizEl = document.getElementById("quiz-container");
-// let quizBtn = document.getElementById("quiz-btn");
+// LIKE BUTTON
+// Dom Elements
+let usefulBtn = document.getElementById("useful-btn");
 
-// // Events
-// quizBtn.onclick = function (event) {
-//   console.log(event);
-//   gnEl.style.display = "none";
-//   quizEl.style.display = "block";
-// };
+// Events
+if (usefulBtn) {
+  usefulBtn.onclick = function (event) {
+    let values = usefulBtn.value.split("-");
+    let uid = values[1];
+    let mid = values[0];
 
-// gnBtn.onclick = function (event) {
-//   gnEl.style.display = "block";
-//   quizEl.style.display = "none";
-// };
-
-// gnEl.onchange = function (event) {
-//   if (event.target.tagName != "INPUT") return;
-//   if (event.target.value == event.target.id) {
-//     event.target.style.background = "green";
-//   }
-// };
-
-// // LIKE BUTTON
-// // Dom Elements
-// let usefulBtn = document.getElementById("useful-btn");
-
-// // Events
-// if (usefulBtn) {
-//   usefulBtn.onclick = function (event) {
-//     let values = usefulBtn.value.split("-");
-//     let uid = values[1];
-//     let mid = values[0];
-
-//     if (uid.length < 15) {
-//       return;
-//     }
-//     fetch("http://localhost:3000/modules/useful/" + uid + "/" + mid)
-//       .then(function (response) {
-//         return response.json();
-//       })
-//       .then(function (response) {
-//         if (response.index == -1) {
-//           usefulBtn.innerText = response.total + " Found Useful";
-//         } else {
-//           usefulBtn.innerText = "Did you Find This Useful";
-//         }
-//       })
-//       .catch(function (err) {
-//         return;
-//       });
-//   };
-// }
+    if (uid.length < 15) {
+      return;
+    }
+    fetch("http://localhost:3000/modules/useful/" + uid + "/" + mid)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (response) {
+        if (response.index == -1) {
+          usefulBtn.innerHTML =
+            "You and " +
+            (response.total - 1) +
+            " Found This Module Useful<div class='line'></div>";
+        } else {
+          usefulBtn.innerHTML =
+            response.total +
+            " Found This Module Useful<div class='line'></div>";
+        }
+      })
+      .catch(function (err) {
+        return;
+      });
+  };
+}
 
 // MORE INFO
 // Dom Elements
@@ -93,5 +72,68 @@ arrows.forEach((arrow) => {
     event.target.parentElement.previousElementSibling.classList.toggle(
       "module-info-activate"
     );
+  };
+});
+
+// GUIDED NOTES CHECK
+// Dom Elements
+let gnEl = document.getElementById("gn-container");
+
+// Events
+gnEl.onchange = function (event) {
+  if (event.target.tagName != "INPUT") return;
+  if (event.target.value == event.target.id) {
+    event.target.style.background = "green";
+  }
+};
+
+// 3D FLIP
+// Dom Elements
+let flips = document.querySelectorAll(".switch");
+let flipper = document.querySelector(".module-positioner");
+let window1 = document.getElementById("window-1");
+let window2 = document.getElementById("window-2");
+let fib1 = document.querySelector("#window-1 .fib-container");
+let fib2 = document.querySelector("#window-2 .fib-container");
+
+// State
+let fibheight1 = fib1.offsetHeight + "px";
+let fibheight2 = fib2.offsetHeight + "px";
+let height1 = window1.offsetHeight + "px";
+let height2 = window2.offsetHeight + "px";
+
+fib1.style.height = fibheight1;
+fib2.style.height = "0px";
+
+// Events
+flips.forEach((flip) => {
+  flip.onclick = function (event) {
+    if (window1.style.position == "absolute") {
+      var activeWindow = window2;
+      var activeFib = fib2;
+      var newWindow = window1;
+      var newFib = fib1;
+      var fibheight = fibheight1;
+    } else {
+      var activeWindow = window1;
+      var activeFib = fib1;
+      var newWindow = window2;
+      var newFib = fib2;
+      var fibheight = fibheight2;
+    }
+    setTimeout(function () {
+      activeFib.style.height = "0";
+      setTimeout(function () {
+        newWindow.style.opacity = "100%";
+        activeWindow.style.opacity = "0%";
+        setTimeout(function () {
+          newWindow.style.position = "relative";
+          newWindow.style.zIndex = "1";
+          activeWindow.style.position = "absolute";
+          activeWindow.style.zIndex = "-1";
+          newFib.style.height = fibheight;
+        }, 300);
+      }, 300);
+    });
   };
 });

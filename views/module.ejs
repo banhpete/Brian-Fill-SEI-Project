@@ -1,109 +1,133 @@
 <%- include('./partials/header') %>
 <script src="/javascripts/moduleFunctions.js" defer></script>
 <div id="module-container">
-  <div class ="module-window">
-    <div class="module-header">
-      <h2>Quiz on <%= module.topic%></h2>
-      <p>Use the Guided Notes&#10095;</p>
-    </div>
-    <div class="module-info">
-      <div class ="module-info-left">
-        <p><span>Category:</span> <%= module.category.name%></p>
-        <p><span>Material From:</span> <%= module.source%></p>
+  <div class ="module-positioner">
+    <div id="window-1" class ="module-window">
+      <div class="module-header">
+        <h2>Quiz on <%= module.topic%></h2>
+        <p class = "switch">Use the Guided Notes&#10095;</p>
       </div>
-      <div class ="module-info-right module-info-hidden">
-        <%if(user && user.id==module.creator._id){%>
-          <a href="/modules/edit/<%= module._id%>">Edit</a>
-        <form
-        id="<%= module._id%>"
-        method="POST"
-        action="/modules/delete/<%= module._id%>/?_method=DELETE"
-      ><a class="deleteBtn">Delete</a>
-      </form>
-        <%}%>
-      </div>         
-    </div>
-    <div class ="arrow-box">
-      <span class ="arrow">&#10095;</span>
-    </div>
-    <div class="fib-container">
-      <div class ="create-info">
-        <p><span>Created by: </span><%= module.creator.name%></p>
-        <p><span>Created On:</span> <%= module.dateCreated.toDateString()%></p>
-      </div>
-      <div class="quiz-container">
-      <% if(!feedback){ %>
-      <form method="POST" action ="/modules/<%= module._id%>/check">
-      <%}else{%>
-      <div>
-      <%}%>
-        <ol>
-          <% module.fibStats.forEach(function(sentence, index){ let newSen =
-          sentence.replace(/\(-.+-\)/, "___________");%>
-          <li>
-            <p><%= newSen %></p>
-          </li>
-          <div>
-            <p>Enter your answer here:</p>
-            <input name = "<%= index %>" 
-            <%if(feedback){%> value="<%= feedback[index+1].answer%>" 
-            class = "<%= (feedback[index+1].status) %>" <%}%> type="text" />
-          </div>
-          <% })%>
-        </ol>
-        <div id="submit-container">
-          <% if(!feedback){ %>
-            <input id="submit" type="submit" />
-            <label for="submit"></label>
-          <%}else{%>
-            <a href="/modules/<%= module._id%>"><button>Try Again</button></a>
-          <%}%>
+      <div class="module-info">
+        <div class ="module-info-left">
+          <p><span>Category:</span> <%= module.category.name%></p>
+          <p><span>Material From:</span> <%= module.source%></p>
         </div>
-      <% if(!feedback){ %>
-      </form >
-      <%}else{%>
+        <div class ="module-info-right">
+          <%if(user && user.id==module.creator._id){%>
+            <a href="/modules/edit/<%= module._id%>">Edit</a>
+          <form
+          id="<%= module._id%>"
+          method="POST"
+          action="/modules/delete/<%= module._id%>/?_method=DELETE"
+        ><a class="deleteBtn">Delete</a>
+        </form>
+          <%}%>
+        </div>         
       </div>
-      <%}%>
+      <div class ="arrow-box">
+        <span class ="arrow">&#10095;</span>
       </div>
-    </div>
-  </div>
-  <div class ="module-window">
-    <div class="module-header">
-      <h2>Guided Notes on <%= module.topic%></h2>
-      <p>Take the Quiz&#10095;</p>
-    </div>
-    <div class="module-info">
-      <div class ="module-info-left">
-        <p><span>Category:</span> <%= module.category.name%></p>
-        <p><span>Material From:</span> <%= module.source%></p>
-      </div>
-      <div class ="module-info-right module-info-hidden">
-        <%if(user && user.id==module.creator._id){%>
-          <a href="/modules/edit/<%= module._id%>">Edit</a>
-        <form
-        id="<%= module._id%>"
-        method="POST"
-        action="/modules/delete/<%= module._id%>/?_method=DELETE"
-      ><a href=# class="deleteBtn">Delete</a>
-      </form>
+      <div class="fib-container">
+        <div class="additional-info">
+          <div class ="create-info">
+            <p><span>Created by: </span><%= module.creator.name%></p>
+            <p><%= module.dateCreated.toDateString()%></p>
+          </div>
+          <%if(user){%>
+            <button class ="useful-btn" id ="useful-btn" value="<%=module._id%>-<%if(user){%><%=user.id%><%}%>" >
+              <%if(module.usersFoundUseful.includes(user.id)){%>
+                You and <%=module.usersFoundUseful.length-1%> Found This Module Useful<%}else{%><%=module.usersFoundUseful.length%> Found Module Useful<%}%>
+                <div class="line"></div>
+            </button>
+            <%}else{%>
+              <p class ="useful-btn"><%=module.usersFoundUseful.length%> Found Useful</p>
+            <%}%>
+        </div>
+        <div class="quiz-container">
+        <% if(!feedback){ %>
+        <form method="POST" action ="/modules/<%= module._id%>/check">
+        <%}else{%>
+        <div>
         <%}%>
-      </div>         
-    </div>
-    <div class ="arrow-box">
-      <span class="arrow">&#10095;</span>
-    </div>
-    <div class="fib-container">
-      <div class ="create-info">
-        <p><span>Created by: </span><%= module.creator.name%></p>
-        <p><span>Created On:</span> <%= module.dateCreated.toDateString()%></p>
+          <ol>
+            <% module.fibStats.forEach(function(sentence, index){ let newSen =
+            sentence.replace(/\(-.+-\)/, "___________");%>
+            <li>
+              <p><%= newSen %></p>
+            </li>
+            <div>
+              <p>Enter your answer here:</p>
+              <input name = "<%= index %>" 
+              <%if(feedback){%> value="<%= feedback[index+1].answer%>" 
+              class = "<%= (feedback[index+1].status) %>" <%}%> type="text" />
+            </div>
+            <% })%>
+          </ol>
+          <div id="submit-container">
+            <% if(!feedback){ %>
+              <input id="submit" type="submit" />
+              <label for="submit"></label>
+            <%}else{%>
+              <a href="/modules/<%= module._id%>"><button>Try Again</button></a>
+            <%}%>
+          </div>
+        <% if(!feedback){ %>
+        </form >
+        <%}else{%>
+        </div>
+        <%}%>
+        </div>
       </div>
-      <div id="gn-container">
-        <p>
-          <% module.guidedNotes.split(" ").forEach(function(word, index){
-          if(word.match(/\(-.+-\)/)){%>
-          <input id='<%=word.replace(/\(-+|-\)+/g, "")%>' type="text" />
-          <%}else{%> <%=word%> <%}})%>
-        </p>
+    </div>
+    <div id="window-2" class ="module-window">
+      <div class="module-header">
+        <h2>Guided Notes on <%= module.topic%></h2>
+        <p class = "switch" >Take the Quiz&#10095;</p>
+      </div>
+      <div class="module-info">
+        <div class ="module-info-left">
+          <p><span>Category:</span> <%= module.category.name%></p>
+          <p><span>Material From:</span> <%= module.source%></p>
+        </div>
+        <div class ="module-info-right module-info-hidden">
+          <%if(user && user.id==module.creator._id){%>
+            <a href="/modules/edit/<%= module._id%>">Edit</a>
+          <form
+          id="<%= module._id%>"
+          method="POST"
+          action="/modules/delete/<%= module._id%>/?_method=DELETE"
+        ><a href=# class="deleteBtn">Delete</a>
+        </form>
+          <%}%>
+        </div>         
+      </div>
+      <div class ="arrow-box">
+        <span class="arrow">&#10095;</span>
+      </div>
+      <div class="fib-container">
+        <div class="additional-info">
+          <div class ="create-info">
+            <p><span>Created by: </span><%= module.creator.name%></p>
+            <p><%= module.dateCreated.toDateString()%></p>
+          </div>
+          <%if(user){%>
+            <button class ="useful-btn" id ="useful-btn" value="<%=module._id%>-<%if(user){%><%=user.id%><%}%>" >
+              <%if(module.usersFoundUseful.includes(user.id)){%>
+                You and <%=module.usersFoundUseful.length-1%> Found This Module Useful<%}else{%><%=module.usersFoundUseful.length%> Found Module Useful<%}%>
+                <div class="line"></div>
+            </button>
+            <%}else{%>
+              <p class ="useful-btn"><%=module.usersFoundUseful.length%> Found Useful</p>
+            <%}%>
+        </div>
+        <div id="gn-container">
+          <p>
+            <% module.guidedNotes.split(" ").forEach(function(word, index){
+            if(word.match(/\(-.+-\)/)){%>
+            <input id='<%=word.replace(/\(-+|-\)+/g, "")%>' type="text" />
+            <%}else{%> <%=word%> <%}})%>
+          </p>
+        </div>
       </div>
     </div>
   </div>

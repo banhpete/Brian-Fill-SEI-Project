@@ -460,9 +460,28 @@ body{
 #module-container{
   @extend .container;
   flex-direction:column;
-  .module-window{
+  .module-positioner{
+    position:relative;
     width:800px;
-    margin:20px;
+    margin: 20px;
+  }
+  #window-1{
+    z-index:1;
+    position:relative;
+    top:0px;
+    transition: opacity 0.5s, height 1.5s;
+  }
+  #window-2{
+    z-index:-1;
+    position:absolute;
+    top:0px;
+    opacity:0%;
+    transition: opacity 0.5s, height 1.5s;
+  }
+  .module-window{
+    display:flex;
+    flex-direction: column;
+    width:800px;
     .module-header{
       background: linear-gradient($brainfill-blue, $brainfill-blue), url("/images/pattern.jpg");
       border-radius:5px 5px 0 0;
@@ -477,7 +496,6 @@ body{
       }
     }
     .module-info{
-      position:relative;
       display:flex;
       flex-direction: row;
       justify-content: space-between;
@@ -507,7 +525,6 @@ body{
       display:flex;
       justify-content: center;;
       position:relative;
-      height:100%;
       .arrow{
         display:flex;
         justify-content: center;
@@ -527,15 +544,51 @@ body{
       }
     }
     .fib-container{
+      overflow:hidden;
       flex-grow:1;
       box-shadow: 5px 10px 20px -20px;
       background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), url("/images/pattern.jpg");
       border-radius:0 0 5px 5px;
       padding:0 10px;
-      .create-info{
-        padding:10px 15px;
+      transition:height 0.5s;
+      input[type="text"]{
+        padding-left:5px;
+        background:#F1F1F1;
+        border:0px;
+        border-radius:5px;
+        outline:none;
+        border:1px solid rgba(0,0,0,0);
+        &:focus{
+          background:white;
+          border:1px solid black;
+        }
+      }
+      .additional-info{
         display:flex;
         justify-content: space-between;
+        padding:10px 15px;
+        .create-info{
+          display:flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .useful-btn{
+          font-size:15px;
+          position:relative;
+          background:rgba(0,0,0,0);
+          border:0px;
+          outline:none;
+          &:hover > .line{ 
+            width:100%;
+          }
+          .line{
+            z-index:3;
+            background:$brainfill-yellow;
+            height:3px;
+            width:0;
+            transition: width 0.5s;
+          }
+        }
       }
       ol{
         padding:0 30px;
