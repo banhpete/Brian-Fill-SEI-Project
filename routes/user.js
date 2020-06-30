@@ -4,7 +4,6 @@ var Module = require("../models/module");
 var User = require("../models/user");
 
 router.get("/:id", isLoggedIn, function (req, res, next) {
-  console.log("hi");
   const p1 = Module.find({
     userCompArr: { $elemMatch: { user: req.user.id } },
   });

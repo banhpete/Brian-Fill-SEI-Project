@@ -79,7 +79,6 @@ let arrows = document.querySelectorAll(".arrow");
 
 arrows.forEach((arrow) => {
   arrow.onclick = function (event) {
-    console.log("hi");
     event.target.parentElement.previousElementSibling.classList.toggle(
       "module-info-activate"
     );

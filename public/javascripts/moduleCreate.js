@@ -15,7 +15,6 @@ function checkContent(event) {
   event.stopPropagation();
   let sentences = contentEl.value.replace(/(\r\n|\n|\r)/gm, " ");
   sentences = sentences.match(/\S.*?\."?(?=\s|$)/g);
-  sentences.forEach((sentence) => console.log(sentence));
   numbersEl.innerText = "";
   for (let i = 0; i <= sentences.length; i++) {
     let option = document.createElement("option");

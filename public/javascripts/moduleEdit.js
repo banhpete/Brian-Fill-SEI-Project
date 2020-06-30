@@ -14,7 +14,6 @@ let numOfSentences = 0;
 let sentences = contentEl.value.replace(/(\r\n|\n|\r)/gm, " ");
 sentences = sentences.match(/\S.*?\."?(?=\s|$)/g);
 numbersEl.innerText = "";
-console.log(numbersEl.defval);
 for (let i = 0; i <= sentences.length; i++) {
   let option = document.createElement("option");
   option.value = i;
