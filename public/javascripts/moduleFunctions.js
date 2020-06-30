@@ -28,38 +28,44 @@ delPopUp.onclick = function (event) {
 
 // LIKE BUTTON
 // Dom Elements
-let usefulBtn = document.getElementById("useful-btn");
+let usefulBtns = document.querySelectorAll(".useful-btn");
 
 // Events
-if (usefulBtn) {
-  usefulBtn.onclick = function (event) {
-    let values = usefulBtn.value.split("-");
-    let uid = values[1];
-    let mid = values[0];
+if (usefulBtns) {
+  usefulBtns.forEach((btn) => {
+    btn.onclick = function () {
+      let values = btn.value.split("-");
+      let uid = values[1];
+      let mid = values[0];
 
-    if (uid.length < 15) {
-      return;
-    }
-    fetch("http://localhost:3000/modules/useful/" + uid + "/" + mid)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (response) {
-        if (response.index == -1) {
-          usefulBtn.innerHTML =
-            "You and " +
-            (response.total - 1) +
-            " Found This Module Useful<div class='line'></div>";
-        } else {
-          usefulBtn.innerHTML =
-            response.total +
-            " Found This Module Useful<div class='line'></div>";
-        }
-      })
-      .catch(function (err) {
+      if (uid.length < 15) {
         return;
-      });
-  };
+      }
+
+      fetch("http://localhost:3000/modules/useful/" + uid + "/" + mid)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (response) {
+          usefulBtns.forEach((btn2) => {
+            if (response.index == -1) {
+              btn2.innerHTML =
+                "You and " +
+                (response.total - 1) +
+                " Found This Module Useful<div class='line'></div>";
+            } else {
+              btn2.innerHTML =
+                response.total +
+                " Found This Module Useful<div class='line'></div>";
+            }
+          });
+        })
+        .catch(function (err) {
+          console.log("error");
+          return;
+        });
+    };
+  });
 }
 
 // MORE INFO
@@ -87,10 +93,10 @@ gnEl.onchange = function (event) {
   }
 };
 
-// 3D FLIP
+// QUIZ - NOTES TRANSITION
 // Dom Elements
-let flips = document.querySelectorAll(".switch");
-let flipper = document.querySelector(".module-positioner");
+let switches = document.querySelectorAll(".switch");
+let switcher = document.querySelector(".module-positioner");
 let window1 = document.getElementById("window-1");
 let window2 = document.getElementById("window-2");
 let fib1 = document.querySelector("#window-1 .fib-container");
@@ -106,8 +112,8 @@ fib1.style.height = fibheight1;
 fib2.style.height = "0px";
 
 // Events
-flips.forEach((flip) => {
-  flip.onclick = function (event) {
+switches.forEach((switche) => {
+  switche.onclick = function (event) {
     if (window1.style.position == "absolute") {
       var activeWindow = window2;
       var activeFib = fib2;

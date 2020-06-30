@@ -34,13 +34,13 @@
             <p><%= module.dateCreated.toDateString()%></p>
           </div>
           <%if(user){%>
-            <button class ="btn" id ="useful-btn" value="<%=module._id%>-<%if(user){%><%=user.id%><%}%>" >
+            <button class ="btn useful-btn" value="<%=module._id%>-<%if(user){%><%=user.id%><%}%>" >
               <%if(module.usersFoundUseful.includes(user.id)){%>
                 You and <%=module.usersFoundUseful.length-1%> Found This Module Useful<%}else{%><%=module.usersFoundUseful.length%> Found Module Useful<%}%>
                 <div class="line"></div>
             </button>
             <%}else{%>
-              <p class ="useful-btn"><%=module.usersFoundUseful.length%> Found Useful</p>
+              <p><%=module.usersFoundUseful.length%> Found Useful</p>
             <%}%>
         </div>
         <div class="quiz-container">
@@ -113,13 +113,13 @@
             <p><%= module.dateCreated.toDateString()%></p>
           </div>
           <%if(user){%>
-            <button class ="useful-btn" id ="useful-btn" value="<%=module._id%>-<%if(user){%><%=user.id%><%}%>" >
+            <button class ="btn useful-btn" value="<%=module._id%>-<%if(user){%><%=user.id%><%}%>" >
               <%if(module.usersFoundUseful.includes(user.id)){%>
                 You and <%=module.usersFoundUseful.length-1%> Found This Module Useful<%}else{%><%=module.usersFoundUseful.length%> Found Module Useful<%}%>
                 <div class="line"></div>
             </button>
             <%}else{%>
-              <p class ="useful-btn"><%=module.usersFoundUseful.length%> Found Useful</p>
+              <p><%=module.usersFoundUseful.length%> Found Useful</p>
             <%}%>
         </div>
         <div id="gn-container">

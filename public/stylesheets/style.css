@@ -721,6 +721,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  position: relative;
 }
 
 #module-container .module-positioner {
@@ -818,6 +819,7 @@ body {
 }
 
 #module-container .module-window .module-info .module-info-right *:hover {
+  cursor: pointer;
   color: #ffde00ff;
 }
 
@@ -1025,7 +1027,7 @@ body {
           flex-direction: column;
   top: 40%;
   left: 40%;
-  z-index: 6;
+  z-index: 11;
   background: #F1F1F1;
   display: none;
 }
@@ -1084,6 +1086,7 @@ body {
   left: 0px;
   height: 100%;
   width: 100%;
+  z-index: 10;
 }
 
 #profile-container #profile-window {

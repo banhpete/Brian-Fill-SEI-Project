@@ -461,6 +461,7 @@ body{
 #module-container{
   @extend .container;
   flex-direction:column;
+  position:relative;
   .module-positioner{
     position:relative;
     width:800px;
@@ -520,6 +521,7 @@ body{
           text-decoration: none;
         }
         & *:hover{
+          cursor:pointer;
           color:$brainfill-yellow;
         }
       }
@@ -657,7 +659,7 @@ body{
     flex-direction:column;
     top:40%;
     left:40%;
-    z-index:6;
+    z-index:11;
     background:#F1F1F1;
     &>div{
       width:100%;
@@ -701,6 +703,7 @@ body{
     left:0px;
     height:100%;
     width:100%;
+    z-index:10;
   }
 }
 
