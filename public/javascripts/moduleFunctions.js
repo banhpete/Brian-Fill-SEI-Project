@@ -42,7 +42,7 @@ if (usefulBtns) {
         return;
       }
 
-      fetch("http://localhost:3000/modules/useful/" + uid + "/" + mid)
+      fetch("https://fill-in-the-brain.herokuapp.com/" + uid + "/" + mid)
         .then(function (response) {
           return response.json();
         })
