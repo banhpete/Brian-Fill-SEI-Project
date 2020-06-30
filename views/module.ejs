@@ -34,7 +34,7 @@
             <p><%= module.dateCreated.toDateString()%></p>
           </div>
           <%if(user){%>
-            <button class ="useful-btn" id ="useful-btn" value="<%=module._id%>-<%if(user){%><%=user.id%><%}%>" >
+            <button class ="btn" id ="useful-btn" value="<%=module._id%>-<%if(user){%><%=user.id%><%}%>" >
               <%if(module.usersFoundUseful.includes(user.id)){%>
                 You and <%=module.usersFoundUseful.length-1%> Found This Module Useful<%}else{%><%=module.usersFoundUseful.length%> Found Module Useful<%}%>
                 <div class="line"></div>
@@ -65,10 +65,12 @@
           </ol>
           <div id="submit-container">
             <% if(!feedback){ %>
-              <input id="submit" type="submit" />
-              <label for="submit"></label>
+              <button id="submit" name="submit" class="btn">
+                Submit
+                <div class="line"></div>
+              </button>
             <%}else{%>
-              <a href="/modules/<%= module._id%>"><button>Try Again</button></a>
+              <a href="/modules/<%= module._id%>"><button class="btn">Try Again<div class="line"></div></button></a>
             <%}%>
           </div>
         <% if(!feedback){ %>

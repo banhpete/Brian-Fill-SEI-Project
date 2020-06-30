@@ -58,7 +58,7 @@
   <div id="modules-container">
     <% modules.forEach(function(m){ %>
     <div class="module" id = "/modules/<%= m._id%>">
-      <div class="module-info">
+      <div class="module-info" id = "/modules/<%= m._id%>">
         <% if(user){if(m.creator._id == user.id) { %>
         <div class="popup-menu">
           <i class="fa fa-gear"></i>

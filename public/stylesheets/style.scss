@@ -423,6 +423,7 @@ body{
         border-radius:5px;
         outline:none;
         font-size:14px;
+        padding-left:5px;
         &:focus{
           background:white;
           border:1px solid black;
@@ -493,6 +494,12 @@ body{
       h2{
         font-family: 'Ubuntu','Roboto', sans-serif;
         font-size:30px;
+      }
+      .switch{
+        cursor:pointer;
+        &:hover{
+          color: $brainfill-yellow;
+        }
       }
     }
     .module-info{
@@ -572,23 +579,6 @@ body{
           flex-direction: column;
           justify-content: space-between;
         }
-        .useful-btn{
-          font-size:15px;
-          position:relative;
-          background:rgba(0,0,0,0);
-          border:0px;
-          outline:none;
-          &:hover > .line{ 
-            width:100%;
-          }
-          .line{
-            z-index:3;
-            background:$brainfill-yellow;
-            height:3px;
-            width:0;
-            transition: width 0.5s;
-          }
-        }
       }
       ol{
         padding:0 30px;
@@ -630,11 +620,31 @@ body{
         }
       }
       .wrong{
-        background:red;
+        background:red !important;
       }
       .correct{
-        background:green;
+        background:green !important;
       }
+    }
+  }
+  .btn{
+    font-size:15px;
+    position:relative;
+    background:rgba(0,0,0,0);
+    border:0px;
+    outline:none;
+    &:hover{
+      cursor:pointer;
+    }
+    &:hover > .line{ 
+      width:100%;
+    }
+    .line{
+      z-index:3;
+      background:$brainfill-yellow;
+      height:3px;
+      width:0;
+      transition: width 0.5s;
     }
   }
   #pop-up-delete{

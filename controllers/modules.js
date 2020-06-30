@@ -153,13 +153,10 @@ function checkAnswers(req, res, next) {
         }
       });
       feedback[0] = feedback[0] + "/" + module.fibStats.length;
-      console.log(req.user);
       if (req.user) {
-        console.log("Inside the if");
         let index = module.userCompArr.findIndex(
           (obj) => obj.user == req.user.id
         );
-        console.log(index);
         if (index != -1) {
           module.userCompArr.splice(index, 1, {
             user: req.user.id,
@@ -189,7 +186,6 @@ function editModuleView(req, res, next) {
 function editModule(req, res, next) {
   const promise = Category.findOne({ name: req.body.category });
   Module.findById(req.params.id, function (err, module) {
-    console.log(req.body.numOfBlanks);
     if (req.body.numOfBlanks != "No change") {
       // Create another key:value pair for the Schema
       req.body.fibStats = [];
@@ -223,10 +219,7 @@ function editModule(req, res, next) {
     promise.then(function (category) {
       module.category = category._id;
       module.userCompArr = [];
-      console.log(category);
       module.save(function (err) {
-        console.log(module);
-        console.log("saved!");
         if (err) next();
         res.redirect("/modules/" + module._id);
       });
@@ -240,7 +233,6 @@ function searchModule(req, res, next) {
     modules
   ) {
     if (err) next();
-    console.log(modules);
     res.render("index", { user: req.user, modules: modules });
   })
     .populate("category")

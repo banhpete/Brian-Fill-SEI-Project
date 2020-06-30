@@ -14,7 +14,10 @@ modConEl.onclick = function (event) {
     formEl = event.target.parentNode;
     delPopUp.style.display = "flex";
     delBackdrop.style.display = "block";
-  } else if (event.target.offsetParent.classList.contains("module")) {
+  } else if (
+    event.target.offsetParent.classList.contains("module") ||
+    event.target.offsetParent.classList.contains("module-info")
+  ) {
     window.location.href = event.target.offsetParent.id;
   } else {
     return;

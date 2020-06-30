@@ -663,6 +663,7 @@ body {
   border-radius: 5px;
   outline: none;
   font-size: 14px;
+  padding-left: 5px;
 }
 
 #create-container #create-window form input[type='text']:focus, #create-container #create-window form textarea:focus, #create-container #create-window form select:focus {
@@ -776,6 +777,14 @@ body {
 #module-container .module-window .module-header h2 {
   font-family: 'Ubuntu','Roboto', sans-serif;
   font-size: 30px;
+}
+
+#module-container .module-window .module-header .switch {
+  cursor: pointer;
+}
+
+#module-container .module-window .module-header .switch:hover {
+  color: #ffde00ff;
 }
 
 #module-container .module-window .module-info {
@@ -905,27 +914,6 @@ body {
           justify-content: space-between;
 }
 
-#module-container .module-window .fib-container .additional-info .useful-btn {
-  font-size: 15px;
-  position: relative;
-  background: rgba(0, 0, 0, 0);
-  border: 0px;
-  outline: none;
-}
-
-#module-container .module-window .fib-container .additional-info .useful-btn:hover > .line {
-  width: 100%;
-}
-
-#module-container .module-window .fib-container .additional-info .useful-btn .line {
-  z-index: 3;
-  background: #ffde00ff;
-  height: 3px;
-  width: 0;
-  -webkit-transition: width 0.5s;
-  transition: width 0.5s;
-}
-
 #module-container .module-window .fib-container ol {
   padding: 0 30px;
 }
@@ -986,11 +974,36 @@ body {
 }
 
 #module-container .module-window .fib-container .wrong {
-  background: red;
+  background: red !important;
 }
 
 #module-container .module-window .fib-container .correct {
-  background: green;
+  background: green !important;
+}
+
+#module-container .btn {
+  font-size: 15px;
+  position: relative;
+  background: rgba(0, 0, 0, 0);
+  border: 0px;
+  outline: none;
+}
+
+#module-container .btn:hover {
+  cursor: pointer;
+}
+
+#module-container .btn:hover > .line {
+  width: 100%;
+}
+
+#module-container .btn .line {
+  z-index: 3;
+  background: #ffde00ff;
+  height: 3px;
+  width: 0;
+  -webkit-transition: width 0.5s;
+  transition: width 0.5s;
 }
 
 #module-container #pop-up-delete {
