@@ -42,7 +42,12 @@ if (usefulBtns) {
         return;
       }
 
-      fetch("https://fill-in-the-brain.herokuapp.com/" + uid + "/" + mid)
+      fetch(
+        "https://fill-in-the-brain.herokuapp.com/modules/useful/" +
+          uid +
+          "/" +
+          mid
+      )
         .then(function (response) {
           return response.json();
         })
