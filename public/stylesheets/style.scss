@@ -366,6 +366,7 @@ body{
 
     #button-container{
       display:flex;
+      flex-direction:column;
     }
 
     a{
