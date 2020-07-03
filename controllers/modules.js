@@ -186,8 +186,16 @@ function editModuleView(req, res, next) {
 }
 
 function editModule(req, res, next) {
-  const promise = Category.findOne({ name: req.body.category });
-  Module.findById(req.params.id, function (err, module) {
+  const promise = Category.findOne({
+    name: req.body.category,
+  });
+  Module.findOne({ _id: req.params.id, creator: req.user.id }, function (
+    err,
+    module
+  ) {
+    if (err) {
+      next();
+    }
     if (req.body.numOfBlanks != "No change") {
       // Create another key:value pair for the Schema
       req.body.fibStats = [];
