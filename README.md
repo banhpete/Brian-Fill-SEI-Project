@@ -1,24 +1,32 @@
 # BrainFill - General Assembly - SEI Project 2
-BrainFill is a web application used to create learning modules in the form of fill-in-the-blank statements from content provided by a user. The objective is to provide users with a way to quickly test their knowledge on content they are trying to learn or to provide some guided notes. This application was created for General Assembly's Software Engineering Immsersive (SEI) Program.
+![Image of BrainFill](./README-Images/Screenshot.JPG)
+
+BrainFill is a web application used to create learning modules in the form of fill-in-the-blank statements from content provided by a user. The objective is to provide users with a way to quickly test their knowledge on content they are trying to learn or to provide some guided notes. This application was created for the second project of General Assembly's Software Engineering Immsersive (SEI) Program.
 
 # Technologies Used
 BrainFill is a web application based on NodeJS, Express and MongoDB. The database is hosted on MongoDB Atlas and the web application is hosted on Heroku.
 
 # Getting Started
-You can find the web app deployed at Heroku [here](https://fill-in-the-brain.herokuapp.com/).
+You can find the web app deployed at Heroku [here](https://brain-fill.herokuapp.com/).
 
 # Next Steps
-Complete the css of the the project.
+The next steps for the BrainFill application will be to add the additional features included in the Trello Board(link included below) that were not added due to time restrictions or to improve current features. This includes:
+- Improving the user's experiene when taking a quiz or doing the guided notes by:
+  - Providing an option to show correct answers
+  - Improve the style of the user inputs
+- Implementing a third-party Natural Language Process (NPL) API to improve how fill-in-the-blank statements are generated. The current algorithm is far too random resulting in some fill-in-the-blank statements not being entirely helpful to a user. The most promising NPL APIs that will be considered are Google Cloud's Natural Language API and IBM's Watson Natural Language Understanding API. One direction is to use the API's feature to determine a word's relevancy/salience to a sentence to determine if it should be used as a blank.
+- Modify the regex used in BrainFill such that punctuations are not included in words.
+- Introduce different methods of authenticating, this includes using OAuth with Facebook or a built-in authentication system.
+- Ensure the application is accessible for mobile users.
 
-# Notes on the Initital Development 
+# Notes on the Development 
 To provide insight of how the application was developed, the following sections are covered:
 
 1. [Project Requirements](#1-project-requirements)
 2. [Initial Project Proposal](#2-project-proposal)
-2. [Wireframe](2-wireframe)
-3. [Psuedocode](#3-pseudocode)
-4. [Difficulties Faced](#4-difficulties-faced)
-7. [Content of the Working Version](#5-contents-of-the-working-version)
+3. [User Stories](#3-user-stories)
+4. [Wireframes](#4-wireframes)
+5. [Entity Relationship Diagram](#5-entity-relationship-diagrams)
 
 ## 1. Project Requirements
 
@@ -30,12 +38,12 @@ As part of General Assembly's Software Engineering Immersive Program, students a
 
 This web application may optionally include the following features:
   - OAuth Authentication
-  - Basic Authorization that restricts users from performing CUD operations unless they are logged in and the data is created by them. ```isLoggedIn``` middlware should be used for this feature.
+  - Basic Authorization that restricts users from performing CRUD operations unless they are logged in and the data is created by them. ```isLoggedIn``` middlware should be used for this feature.
   - Uses a third-party API
   - Exposes its own API where it returns data resources as JSON
 
 ## 2. Project Proposal - Fill-in the Brain
-As per the project requirements above, the web application "Fill-In the Brain" is proposed. 
+As per the project requirements above, the web application "BrainFill" is proposed. 
 
 This will be an application that will allow users to generate a series of fill in the blank statements based on content they input into the application.
 
@@ -51,7 +59,7 @@ The objective of the application is two-fold, it is to:
 
 All collections of fill in the blank statements will be called modules and when created, they will be saved on a database for the user to access later on. Users will also be able to use other modules created by another user, however only the user that created the module will be able to delete it.
 
-## 3. User Stories for Fill-In the Brain
+## 3. User Stories
 To truly understand the tasks needed to create the Fill-In the Brain application, a Trello board was created with three categories, Ice Box, Current/MVP(Minimum Viable Product), and Completed, and user stories were brainstormed under the Ice Box Category. 
 
 User stories were ordered in terms of what would be necessary to create a minimum viable project, and the items deemed absolutely neccessary were moved over the Current/MVP category. All other items will be worked on right now only if time permits, otherwise they will be kept for future development.
@@ -74,13 +82,21 @@ Below are the results of the initial brainstorming and categorization. Icebox it
 - As a visitor, I want to be able to access this website on the mobile **(Icebox)**.
 - As a developer, I want to be able to access the database through an API and grab module questions or data on users because I want to use this for my own development **(Icebox)**.
 
-The Trello board can be found [here](https://trello.com/b/0HfglLJ1/fill-in-the-brain). Items in the Current/MVP category will be moved over to completed when finished.
+The Trello board can be found [here](https://trello.com/b/0HfglLJ1/fill-in-the-brain). Items in the Current/MVP category will be moved over to completed when finished. Additional items were added since this readme was created.
 
-## 4. Wireframes for Fill-In the Brain
+## 4. Wireframes
+To plan the layout of the web application, Adobe XD was used to create a general overview of how each page should look like. Below are a few examples.
+
+![Image of Index Page - No User](./README-Images/IndexPage-NotSignedIn.png)
+![Image of Index Page - User](./README-Images/IndexPage-SignedIn.png)
+![Image of Module Create View](./README-Images/CreateModule.png)
+![Image of Module Quiz](./README-Images/ModuleQuiz.png)
 
 ## 5. Entity Relationship Diagrams
+The BrainFill application uses MongoDB and will follow the ERD shown below.
+![Image of Module Quiz](./README-Images/BrainFill-ERD.jpg)
 
-## 6. Creating Fill-In the Blank Statements
+The reason for the module entity to have all the foreign keys is partially to make the process of removing a module straight forward in the sense that we don't have to scour through the other entities to see which one referenced that particular module document.
 
 
 
