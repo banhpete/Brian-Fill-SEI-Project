@@ -43,10 +43,7 @@ if (usefulBtns) {
       }
 
       fetch(
-        "https://fill-in-the-brain.herokuapp.com/modules/useful/" +
-          uid +
-          "/" +
-          mid
+        "https://brain-fill.herokuapp.com/modules/useful/" + uid + "/" + mid
       )
         .then(function (response) {
           return response.json();
