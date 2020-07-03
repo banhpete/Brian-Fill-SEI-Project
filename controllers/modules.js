@@ -127,12 +127,14 @@ function useModule(req, res, next) {
 }
 
 function deleteModule(req, res, next) {
-  Module.findByIdAndRemove({ _id: req.params.id }).exec(function (err, module) {
-    if (err) next();
-    if (req.path.includes("all") || req.path.includes("user"))
-      res.redirect("back");
-    else res.redirect("/modules/all");
-  });
+  Module.findOneAndRemove({ _id: req.params.id, creator: req.user.id }).exec(
+    function (err, module) {
+      if (err) next();
+      if (req.path.includes("all") || req.path.includes("user"))
+        res.redirect("back");
+      else res.redirect("/modules/all");
+    }
+  );
 }
 
 function checkAnswers(req, res, next) {

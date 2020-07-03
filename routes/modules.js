@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var modulesCtrl = require("../controllers/modules");
+const { body } = require("express-validator");
 
 router.get("/all", modulesCtrl.showAll);
 
@@ -8,7 +9,17 @@ router.get("/search", modulesCtrl.searchModule);
 
 router.get("/create", isLoggedIn, modulesCtrl.createView);
 
-router.post("/create", isLoggedIn, modulesCtrl.createModule);
+router.post(
+  "/create",
+  isLoggedIn,
+  [
+    body("content").escape(),
+    body("topic").escape(),
+    body("category").escape(),
+    body("source").escape(),
+  ],
+  modulesCtrl.createModule
+);
 
 router.get("/useful/:uid/:mid", modulesCtrl.usefulModule);
 
@@ -16,9 +27,28 @@ router.get("/user/:id", isLoggedIn, modulesCtrl.showUser);
 
 router.get("/edit/:id", isLoggedIn, modulesCtrl.editModuleView);
 
-router.post("/edit/:id", isLoggedIn, modulesCtrl.editModule);
+router.post(
+  "/edit/:id",
+  isLoggedIn,
+  [
+    body("content").escape(),
+    body("topic").escape(),
+    body("category").escape(),
+    body("source").escape(),
+  ],
+  modulesCtrl.editModule
+);
 
-router.post("/:id/check", modulesCtrl.checkAnswers);
+router.post(
+  "/:id/check",
+  [
+    body("content").escape(),
+    body("topic").escape(),
+    body("category").escape(),
+    body("source").escape(),
+  ],
+  modulesCtrl.checkAnswers
+);
 
 router.get("/:id", modulesCtrl.useModule);
 

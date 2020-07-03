@@ -12,11 +12,14 @@
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "express-session": "^1.17.1",
+    "express-validator": "^6.6.0",
     "http-errors": "~1.6.3",
     "method-override": "^3.0.0",
+    "mongo-sanitize": "^1.1.0",
     "mongoose": "^5.9.19",
     "morgan": "~1.9.1",
     "passport": "^0.4.1",
+    "passport-facebook": "^3.0.0",
     "passport-google-oauth": "^2.0.0"
   }
 }
