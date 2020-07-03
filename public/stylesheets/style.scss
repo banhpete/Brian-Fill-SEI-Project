@@ -759,6 +759,11 @@ body{
   }
 }
 
+#error-container{
+  @extend .container;
+  flex-direction: column;
+}
+
 header{
   svg{
     width:175px;

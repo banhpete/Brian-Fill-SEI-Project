@@ -45,7 +45,7 @@ body {
   /* Firefox */
 }
 
-.container, #index-container, #login-container, #create-container, #module-container, #profile-container {
+.container, #index-container, #login-container, #create-container, #module-container, #profile-container, #error-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1172,6 +1172,13 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#error-container {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;

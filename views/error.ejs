@@ -1,3 +1,10 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<%- include('./partials/header') %>
+
+<div id="error-container">
+  <h2>Sorry! Something went wrong!</h2>
+  <h2>Error Message: <%= message %></h1>
+  <h2>Error Status Code: <%= error.status %></h2>
+  <h2>Help me fix this issue by sending me a screenshoot!</h2>
+</div>
+
+<%- include('./partials/footer') %>
