@@ -18,6 +18,7 @@ The next steps for the BrainFill application will be to add the additional featu
 - Modify the regex used in BrainFill such that punctuations are not included in words.
 - Introduce different methods of authenticating, this includes using OAuth with Facebook or a built-in authentication system.
 - Ensure the application is accessible for mobile users.
+- Review code for any opportunites to sanitize data, and protect user's data/modules.
 
 # Notes on the Development 
 To provide insight of how the application was developed, the following sections are covered:
